@@ -1,0 +1,48 @@
+{
+	"className":"ac:SpecialObject",
+	
+	"sections":
+	[
+		{
+			"name":"header",
+			"data":[
+		
+		    	{
+					"name":"Title",
+					"type":"text",
+					"path":["ac:SpecialObject.ac:Title"]
+				}
+			]
+		},
+		
+		{
+			"name":"body",
+			"data":[
+			
+			 	{
+			        "name":"Authors",
+			        "type":"linkedObjects",
+			        "path":["ac:SpecialObject.ac:applicationOf"]
+			    },
+			    
+			    {
+			        "name":"Editors",
+			        "type":"linkedObjects",
+			        "path":["ac:SpecialObject.ac:applicationOf=ac:Editor.ac:performedBy=ac:Agent.ac:Name"]
+			    }
+			]  
+		},
+		
+		{
+		    "name":"content",
+		    "data":[
+		        
+		        {
+		            "name":"Representation",
+		            "type":"objects",
+			        "path":["ac:SpecialObject.ac:representedBy"]
+		        }
+		    ]
+		}
+	]
+}

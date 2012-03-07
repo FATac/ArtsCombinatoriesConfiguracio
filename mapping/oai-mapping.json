@@ -1,0 +1,23 @@
+{
+	"xmlHeader":"<oai_etdms:thesis xmlns:oai_etdms=\"http://www.ndltd.org/standards/metadata/etdms/1.0/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.ndltd.org/standards/metadata/etdms/1.0/ http://www.ndltd.org/standards/metadata/etdms/1.0/etdms.xsd\">",
+	"xmlFooter":"</oai_etdms:thesis>",
+	"xmlPrefix":"oai_etdms",
+
+	"data":
+	[
+		{
+			"name":"title",
+			"path":["ac:Case-File.ac:references=*.ac:Title"]
+		},
+	
+		{
+			"name":"description",
+		    "path":["ac:Case-File.ac:references=*.ac:Description"]
+		},
+		
+		{
+			"name":"language",
+			"path":["ac:Case-File.ac:hasMedia=*.ac:hasLanguage=ac:Language.ac:Label"]
+		}
+	]
+}

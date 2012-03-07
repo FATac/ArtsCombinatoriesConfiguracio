@@ -1,0 +1,47 @@
+{
+	"className":"ac:Organisation",
+	
+	"sections":
+	[
+		{
+			"name":"header",
+			"data":[
+		
+			    	{
+					"type":"text",
+					"path":["ac:Organisation.ac:Name"]
+				},
+
+				{
+					"type":"text",
+					"path":["ac:Organisation.ac:Homepage"]
+				}
+			]
+		},
+		
+		{
+			"name":"body",
+			"data":[
+			    
+			    {
+					"name":"Location",
+					"type":"text",
+					"path":["ac:Organisation.ac:isLocatedAt=*.ac:Name"]
+			    },
+			    
+			    {
+					"type":"text",
+					"value":[" "]
+			    },
+			    
+			    {
+					"name":"Publications",
+					"type":"objects",
+					"path":["ac:Organisation.ac:performsRole=*.ac:appliesOn"]
+			    }
+			    
+			    
+			]  
+		}
+	]
+}

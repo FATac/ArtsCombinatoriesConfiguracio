@@ -1,0 +1,19 @@
+{
+	"data":[
+	
+	    {   
+	        "type":"search",
+	        "name":"default",
+	        "filter":["ObjectType:Case-File","ObjectType:Publication"],
+	        "sortFields":["class+asc", "AlphabeticalOrder+asc", "ChronologicalOrder+desc"],
+	        "sort":"class asc"
+	    },
+		
+	    {   
+		"type":"search",
+	        "name":"Explorar",
+		"sort":"AlphabeticalOrder asc",
+		"sortFields":["AlphabeticalOrder+asc", "ChronologicalOrder+desc"]
+	    }
+	]
+}

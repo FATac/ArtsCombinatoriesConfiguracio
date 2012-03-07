@@ -1,0 +1,68 @@
+{
+	"className":"ac:Case-File",
+	
+	"sections":
+	[
+		{
+			"name":"header",
+			"data":[
+		
+		    	{
+					"type":"text",
+					"path":["ac:Case-File.ac:references=*.ac:Title"]
+				}
+			]
+		},
+		
+		{
+			"name":"body",
+			"data":[
+			    
+				{
+					"type":"counter",
+					"path":["ac:Case-File.ac:hasMedia=*.class"]			
+				},
+
+				{
+					"type":"text",
+					"value":[" "]
+				},
+			    
+				{
+			        "name":"Description",
+			        "type":"text",
+			        "path":["ac:Case-File.ac:references=*.ac:Description","ac:Case-File.ac:Description"]
+			    },
+			    
+			    {
+			        "name":"Collections",
+			        "type":"linkedObjects",
+			        "path":["ac:Case-File.ac:hasMedia=*.ac:isCollectedIn=ac:Collection.ac:Title"]
+			    }
+			]
+		},
+		
+		{
+			"name":"content",
+			"data":[
+			
+			 	{   
+			        "type":"search",
+			        "value":["CaseFile:"],
+			        "path":["ac:Case-File.id"]
+			    }
+			] 
+		},
+		
+		{
+			"name":"thumbnail",
+			"data":[
+			
+			 	{   
+			        "type":"objects",
+			        "path":["ac:Case-File.ac:hasMedia", "ac:Case-File.ac:references"]
+			    }
+			] 
+		}
+	]
+}

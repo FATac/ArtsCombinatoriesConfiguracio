@@ -1,0 +1,111 @@
+{
+	"className":"ac:Publication",
+	
+	"sections":
+	[
+		{
+			"name":"header",
+			"data":[
+		
+		    	{
+					"type":"text",
+					"path":["ac:Publication.ac:Title"]
+				}
+			]
+		},
+		
+		{
+			"name":"body",
+			"data":[
+			    
+			    {
+			        "name":"Year",
+			        "type":"text",
+			        "path":["ac:Publication.ac:Date"]
+			    },
+			    
+			    {
+			        "name":"Authors",
+			        "type":"linkedObjects",
+			        "path":["ac:Publication.ac:applicationOf=ac:Writer.ac:performedBy=ac:Agent.ac:Name"]
+			    },
+			    
+			    {
+			        "name":"Designers",
+			        "type":"linkedObjects",
+			        "path":["ac:Publication.ac:applicationOf=ac:Designer.ac:performedBy=ac:Agent.ac:Name"]
+			    },
+			    
+			    {
+			        "name":"Translators",
+			        "type":"linkedObjects",
+			        "path":["ac:Publication.ac:applicationOf=ac:Translator.ac:performedBy=ac:Agent.ac:Name"]
+			    },
+			    			    
+			    {
+			        "name":"Editors",
+			        "type":"linkedObjects",
+			        "path":["ac:Publication.ac:applicationOf=ac:Editor.ac:performedBy=ac:Agent.ac:Name"]
+			    },
+			    
+			    {
+			        "name":"Language",
+			        "type":"text",
+			        "path":["ac:Publication.ac:hasLanguage=ac:Language.ac:Label"]
+			    },
+			    
+				{
+			        "name":"ISBN",
+			        "type":"text",
+			        "path":["ac:Publication.ac:ISBN"]
+			    },
+			    
+				{
+			        "name":"NumPages",
+			        "type":"text",
+			        "path":["ac:Publication.ac:NumberofPages"]
+			    },
+			    
+			    {
+			        "name":"Color",
+			        "type":"text",
+			        "path":["ac:Publication.ac:ColorIllustrations"]
+			    },
+			    
+			    {
+			        "name":"Measures",
+			        "type":"text",
+			        "path":["ac:Publication.ac:measurement"]
+			    }
+			]  
+		},
+		
+		{
+		    "name":"content",
+		    "data": [
+		        {
+			        "name":"RelatedActivities",
+			        "type":"objects",
+			        "path":["ac:Publication.ac:isPublicationoftheEvent"]
+			    }
+		    ]
+		},
+		
+		{
+		    "name":"footer",
+		    "data": [
+		        {
+			        "name":"License",
+			        "type":"text",
+			        "path":["ac:Publication.ac:hasLicense"]
+			    }
+		    ]
+		},
+
+		{
+		    "name":"thumbnail",
+		    "data": []
+		
+		}
+	]
+}

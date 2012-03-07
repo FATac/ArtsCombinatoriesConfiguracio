@@ -1,0 +1,38 @@
+{
+	"className":"ac:Person",
+	
+	"sections":
+	[
+		{
+			"name":"header",
+			"data":[
+		
+		    	{
+					"type":"text",
+					"path":["ac:Person.ac:Name", "ac:Person.ac:BirthDate"]
+				}
+			]
+		},
+		
+		{
+			"name":"body",
+			"data":[
+			
+			 	{
+			        "type":"text",
+			        "path":["ac:Person.ac:Bio"]
+			    },
+			    
+			    {
+			        "name":"Author",
+			        "type":"linkedObjects",
+			        "path":[
+			         	"ac:Person.ac:performsRole=ac:Producer.ac:appliesOn=*.ac:Title",
+			         	"ac:Person.ac:performsRole=ac:Writer.ac:appliesOn=*.ac:Title",
+			         	"ac:Person.ac:performsRole=ac:Artist.ac:appliesOn=*.ac:Title"
+			        ]
+			    }
+			]  
+		}
+	]
+}

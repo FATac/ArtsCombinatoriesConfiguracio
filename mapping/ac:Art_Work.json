@@ -1,0 +1,99 @@
+{
+	"className":"ac:Art_Work",
+	
+	"sections":
+	[
+		{
+			"name":"header",
+			"data":[
+		
+			    	{
+					"type":"text",
+					"path":["ac:Art_Work.ac:Title"]
+				}
+			]
+		},
+		
+		{
+			"name":"body",
+			"data":[
+
+                               {
+                                        "type":"text",
+                                        "path":["ac:Art_Work.ac:Date"]
+                                },
+
+                                {
+                                        "type":"text",
+                                        "name":"Technique",
+                                        "path":["ac:Art_Work.ac:Technique"]
+                                },
+
+				{
+					"type":"text",
+					"name":"Mides",
+					"path":["ac:Art_Work.ac:measurement"]
+				},
+
+                                {
+                                        "type":"text",
+                                        "name":"Kind",
+                                        "path":["ac:Art_Work.ac:hasType=ac:KindArtWork.ac:Name"]
+                                },
+
+				{
+					"type":"text",
+					"value":[" "]
+				},
+
+				{
+					"type":"text",
+					"name":"NumFoto",
+					"path":["ac:Art_Work.ac:NumberT"]
+				}, 
+		
+				{
+					"type":"text",
+					"name":"Localitzacio",
+					"path":["ac:Art_Work.ac:CurrentSituation"]
+				},
+
+				{
+					"type":"text",
+					"name":"Valoracio",
+					"path":["ac:Art_Work.ac:EstimatedValue"]
+				},
+
+				{
+					"type":"linkedObjects",
+					"name":"Expedient",
+					"path":["ac:Art_Work.ac:isReferencedBy=*.ac:Title"]
+				},
+	
+			    {
+			        "name":"Authors",
+			        "type":"linkedObjects",
+			        "path":["ac:Art_Work.ac:applicationOf"]
+			    },
+			    
+			    {
+			        "name":"Editors",
+			        "type":"linkedObjects",
+			        "path":["ac:Art_Work.ac:applicationOf=ac:Editor.ac:performedBy=ac:Agent.ac:Name"]
+			    }
+			]  
+		},
+		
+		{
+		    "name":"content",
+		    "data":[
+		        
+		        {
+		            "name":"Representation",
+		            "type":"objects",
+			        "path":["ac:Art_Work.ac:representedBy"]
+		        }
+		    ]
+		}
+	]
+}

@@ -1,0 +1,77 @@
+{
+	"className":"ac:FrameActivity",
+	
+	"sections":
+	[
+		{
+			"name":"header",
+			"data":[
+		
+		    	{
+					"type":"text",
+					"path":["ac:FrameActivity.ac:Title"]
+				}
+			]
+		},
+		
+		{
+			"name":"body",
+			"data":[
+			    
+			    {
+					"name":"Year",
+					"type":"text",
+					"path":["ac:FrameActivity.ac:StartDate"]
+				},
+			    
+				{
+					"type":"text",
+					"path":["ac:FrameActivity.ac:Description"]
+				},
+				
+				{
+				    "name":"Creator",
+				    "type":"linkedObjects",
+					"path":["ac:FrameActivity.ac:applicationOf=ac:Producer.ac:performedBy=*.ac:Name"]
+				},
+				
+				{
+				    "name":"Curator",
+				    "type":"text",
+					"path":["ac:FrameActivity.ac:applicationOf=ac:Curator.ac:performedBy=*.ac:Name"]
+				},
+				
+				{
+					"name":"Places",
+					"type":"text",
+					"path":["ac:FrameActivity.ac:tookPlaceAt=ac:Location.ac:Name"]
+				}
+				
+			]
+		},
+		
+		{
+			"name":"content",
+			"data":[
+			    
+				{
+					"name":"RelatedActivites",
+					"type":"objects",
+					"path":["ac:FrameActivity.ac:hasSpecificActivity"]
+				},
+				
+				{
+					"name":"RelatedPublications",
+					"type":"objects",
+					"path":["ac:FrameActivity.ac:hasPublication"]
+				},
+		    
+		    	{
+		            "name":"Representation",
+		            "type":"objects",
+			        "path":["ac:FrameActivity.ac:representedBy"]
+		        }
+		    ]
+		}
+	]
+}

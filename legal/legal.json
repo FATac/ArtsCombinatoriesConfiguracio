@@ -1,0 +1,650 @@
+/*
+	WARNING: THIS IS A LEGAL SCRIPT SPECIFICATION FOR >>>> PRODUCTION USE <<<< VERSION 0.05 18/07/11
+	''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+	
+	PLEASE READ THE FOLLOWING INFORMATION BEFORE ANY FURTHER MODIFICATION
+
+	* Values must be either constant values (string, integer, boolean) or any data-name already introduced in the process
+	* Each expression "exp" must always evaluate to boolean (true/false)
+	* Expression available operators are "=", ">", "<", "!=", "&&", "||"
+	* Expressions should always contain defined variables, otherwise, expression will not be evaluated (goes to next expression)
+	* All variables are stored globally, which means all defined variables can be used on forward block rules and all variable names should be different
+	* While the process is running: when a block is filled up, the rules are used to know which block to continue to
+*/
+
+{
+	"startBlock":"bStart",
+	
+	"blocks":
+	[
+
+         {
+            "name":"bStart",
+            "data":
+            [
+                 {"name":"Triar_el_color_directament", "type":"string", "values":["(fer el proces legal)","verd","groc","taronja","vermell"]}
+            ],
+
+            "rules":
+            [
+                {"exp":"Triar_el_color_directament='verd'", "result":{"color":"green","license":"ac:hasLicense=Creative_Commons"}},
+                {"exp":"Triar_el_color_directament='groc'", "result":{"color":"yellow","license":"ac:hasLicense=LPI"}},
+                {"exp":"Triar_el_color_directament='taronja'", "result":{"color":"orange","license":"ac:hasLicense=Copyright"}},
+                {"exp":"Triar_el_color_directament='vermell'", "result":{"color":"red","license":"ac:hasLicense=Copyright"}},
+                {"exp":"true", "result":{"block":"bOriginal"}}
+            ]
+        },
+	    
+	
+		/* PHASE 1: Processes general information of the container: creation data, author rights transfered */    
+	
+	    {
+	        "name":"bOriginal",
+	        "description":"Legal process is suitable for original works only",
+	        "data":
+	        [
+	            {"name":"contains_original_work", "type":"boolean"}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"contains_original_work=true", "result":{"block":"bGeneral"}},
+	            {"exp":"true", "result":{"color":"green"}}
+	        ]
+	    },
+	
+	    {
+	        "name":"bGeneral",
+	        "reference":"work_reference",
+	        "description":"General data which is required for any work or document",
+	        "data":
+	        [
+	            {"name":"work_reference", "type":"string"},
+	            {"name":"work_family_reference", "type":"string"},
+	            {"name":"general_comment", "type":"string"},
+	            {"name":"is_author_known", "type":"boolean"},
+	    	    {"name":"work_creation_date", "type":"date"},
+	    	    {"name":"work_spread_date", "type":"date"}
+	        ],
+	        
+	        "rules":
+	        [   
+	            {"exp":"is_author_known=true", "result":{"block":"bAuthor"}},
+	            {"exp":"is_author_known=false", "result":{"block":"bOrphan"}}
+	        ]
+	    },
+	    
+	    {
+	        "name":"bAuthor",
+	        "reference":"work_reference",
+	        "description":"Author",
+	        "data":
+	        [
+	            {"name":"author_name", "type":"string"},
+	            {"name":"author_role", "type":"string", "values":["employed","contractor","independent","curator","other"]},
+	            {"name":"author_comment", "type":"string", "value":"En cas que el rol d'autor sigui altre, emplenar aquest camp"}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"author_role='contractor'", "result":{"block":"bOrder"}},
+	            {"exp":"author_role='independent' || author_role='curator' ", "result":{"block":"bAssignment"}},
+	            {"exp":"author_role='employed' || author_role='other' ", "result":{"block":"bWorkType"}}
+	        ]
+	    },
+	    
+	    {
+	        "name":"bOrder",
+	        "reference":"work_reference",
+	        "description":"Order data",
+	        "data":
+	        [
+	            {"name":"contractor_name", "type":"string"},
+	            {"name":"order_comment", "type":"string"}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"contractor_name!=''", "result":{"block":"bAssignment"}},
+	            {"exp":"true", "result":{"block":"bWorkType"}}
+	        ]
+	    },
+	    
+	    {
+	        "name":"bAssignment",
+	        "reference":"work_reference",
+	        "description":"Transfer of rights",
+	        "data":
+	        [
+	            {"name":"assigment_contract_exists", "type":"boolean"},
+	            {"name":"cc_license", "type":"string", "values":["no_cc", "by", "by_nc", "by_sa", "by_nc_sa", "by_nd", "by_nd_nc"]},
+	            {"name":"assignment_comments", "type":"string", "value":"En el cas que no hi hagi contracte, emplenar aquest camp"}
+	        ],
+	        
+	        "rules":
+	        [
+	        	{"exp":"assigment_contract_exists=true && cc_license='no_cc'", "result":{"block":"bAuthorRights"}},
+	        	{"exp":"true", "result":{"block":"bWorkType"}}
+	        ]
+	    },
+	    
+	    {
+	    	"name":"bAuthorRights",
+	        "reference":"work_reference",
+	    	"description":"Author rights cession",
+	    	"data":
+	    	[
+	    	    {"name":"reproduction", "type":"boolean"},
+	    	    {"name":"transformation", "type":"boolean"},
+	    	    {"name":"publication", "type":"boolean"},
+	    	    {"name":"distribution", "type":"boolean"},
+	    	    {"name":"time_limit", "type":"string"},
+	    	    {"name":"geo_limit", "type":"string"},
+	    	    {"name":"use_limit", "type":"string"},
+	    	    {"name":"payment_required", "type":"string", "values":["no", "unpayed", "payed"]}
+	    	],
+	    	
+	    	"rules":
+	    	[
+	    	    {"exp":"true", "result":{"block":"bWorkType"}}
+	    	]
+	    },
+	    
+	    {
+	        "name":"bOrphan",
+	        "reference":"work_reference",
+	        "description":"Orphan works info",
+	        "data":
+	        [
+	            {"name":"origin_known", "type":"string", "values":["yes", "no", "unknown"]},
+	            {"name":"origin_description", "type":"string"},
+	            {"name":"holder_research", "type":"string", "values":["yes","no","unknown"]},
+	            {"name":"holder_research_comments", "type":"string", "vaule":"Si aplica, expliqueu en aquest camp els resultats de la cerca del titular"},
+	            {"name":"orphan_risk", "type":"string", "values":["high", "medium", "low", "unexisting"]},
+	            {"name":"work_under_protection", "type":"string", "values":["yes", "no", "unknown"]},
+	            {"name":"orphan_comments", "type":"string"}
+	        ],
+	        
+	        "rules":
+	    	[
+	    	    {"exp":"true", "result":{"block":"bWorkType"}}
+	    	]
+	    },
+	    
+	    /* PHASE 2: Processes different content depending on the work type */
+	    
+	    {
+	        "name":"bWorkType",
+	        "reference":"work_reference",
+	        "description":"",
+	        "data":
+	        [
+	            {"name":"work_type", "type":"string", "values":["digital_reproduction","photo","audio","audiovisual","original_text","plastic_work","photo_work","building","expo_installation","edited_book"]}
+	        ],
+	        
+	        "rules":
+	    	[
+	    	    {"exp":"work_type='digital_reproduction'", "result":{"block":"bDigitalReproduction"}},
+	    	    {"exp":"work_type='photo'", "result":{"block":"bPhoto"}},
+	    	    {"exp":"work_type='audio'", "result":{"block":"bAudio"}},
+	    	    {"exp":"work_type='audiovisual'", "result":{"block":"bAudiovisual"}},
+	    	    {"exp":"work_type='original_text'", "result":{"block":"bOriginalText"}},
+	    	    {"exp":"work_type='plastic_work'", "result":{"block":"bPlasticWork"}},
+	    	    {"exp":"work_type='photo_work'", "result":{"block":"bPhotoWork"}},
+	    	    {"exp":"work_type='building'", "result":{"block":"bPhotoBuilding"}},
+	    		{"exp":"work_type='expo_installation'", "result":{"block":"bExpoInstallation"}},
+	    		{"exp":"work_type='edited_book'", "result":{"block":"bEditedBook"}}
+	    	]
+	    },
+	    
+	    {
+	        "name":"bPhoto",
+	        "reference":"work_reference",
+	        "description":"Resolution",
+	        "data":
+	        [
+	            {"name":"resolution", "type":"string"}
+	        ],
+	        
+	        "rules":
+	    	[
+	    	    {"exp":"true", "result":{"block":"bPersonBrandInfo"}}
+	    	]
+	    },
+	    
+	    {
+	        "name":"bAudio",
+	        "reference":"work_reference",
+	        "description":"Audio",
+	        "data":
+	        [
+	            {"name":"includes_speech", "type":"boolean"},
+	            {"name":"includes_music", "type":"boolean"},
+	            {"name":"includes_interview", "type":"boolean"}
+	        ],
+	        
+	        "rules":
+	    	[
+	    	    {"exp":"includes_speech=true", "result":{"block":"bAudioSpeech"}},
+	    	    {"exp":"includes_music=true", "result":{"block":"bAudioMusic"}},
+	    	    {"exp":"includes_interview=true", "result":{"block":"bAudioInterview"}},
+	    	    {"exp":"true", "result":{"block":"bPersonBrandInfo"}}
+	    	]
+	    },
+	    
+	    {
+	        "name":"bAudioSpeech",
+	        "reference":"work_reference",
+	        "description":"Audio Speech",
+	        "data":
+	        [
+	            {"name":"speaker_name", "type":"string"},
+	            {"name":"speaker_contract", "type":"boolean"}
+	        ],
+	        
+	        "rules":
+	    	[
+	    	    {"name":"speaker_name!='' && speaker_contract=true", "result":{"block":"bAudioSpeakerContract"}},
+	    	    {"exp":"includes_music=true", "result":{"block":"bAudioMusic"}},
+	    	    {"exp":"includes_interview=true", "result":{"block":"bAudioInterview"}},
+	    	    {"exp":"true", "result":{"block":"bPersonBrandInfo"}}
+	    	]
+	    },
+	    
+	    {
+	        "name":"bAudioSpeakerContract",
+	        "reference":"work_reference",
+	        "descrption":"Audio speaker contract",
+	        "data":
+	        [
+	            {"name":"speaker_contract_reproduction", "type":"boolean"},
+	    	    {"name":"speaker_contract_transformation", "type":"boolean"},
+	    	    {"name":"speaker_contract_publication", "type":"boolean"},
+	    	    {"name":"speaker_contract_distribution", "type":"boolean"},
+	    	    {"name":"speaker_contract_time_limit", "type":"string"},
+	    	    {"name":"speaker_contract_geo_limit", "type":"string"},
+	    	    {"name":"speaker_contract_use_limit", "type":"string"},
+	    	    {"name":"speaker_contract_payment_required", "type":"string", "values":["no", "unpayed", "payed"]}
+	        ],
+	        
+	        "rules":
+	    	[
+	    	    {"exp":"includes_music=true", "result":{"block":"bAudioMusic"}},
+	    	    {"exp":"includes_interview=true", "result":{"block":"bAudioInterview"}},
+	    	    {"exp":"true", "result":{"block":"bPersonBrandInfo"}}
+	    	]
+	    },
+	    
+	    {
+	        "name":"bAudioMusic",
+	        "reference":"work_reference",
+	        "description":"",
+	        "data":
+	        [
+	            {"name":"music_catalog_reference", "type":"string"},
+	            {"name":"music_publication_authorization", "type":"boolean", "values":["yes","no","unknown"]},
+	            {"name":"music_publication_risk", "type":"string", "values":["high", "medium", "low", "unexisting"]}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"includes_interview=true", "result":{"block":"bAudioInterview"}},
+	    	    {"exp":"true", "result":{"block":"bPersonBrandInfo"}}
+	        ]
+	    },
+	    
+	    {
+	        "name":"bAudioInterview",
+	        "reference":"work_reference",
+	        "description":"",
+	        "data":
+	        [
+	            {"name":"interview_publication_authorization", "type":"string", "values":["yes","no","unknown"]},
+	            {"name":"interview_publication_risk", "type":"string", "values":["high", "medium", "low", "unexisting"]}
+	        ],
+
+	        "rules":
+	        [
+	            {"exp":"true", "result":{"block":"bPersonBrandInfo"}}
+			]
+	    },
+	    
+	    {
+	        "name":"bAudiovisual",
+	        "reference":"work_reference",
+	        "description":"",
+	        "data":
+	        [
+	            {"name":"includes_actors", "type":"boolean"}
+	        ],
+	        
+	        "rules":
+	        [
+				{"exp":"includes_actors=true", "result":{"block":"bAudiovisualActors"}},
+	            {"exp":"true", "result":{"block":"bPersonBrandInfo"}}
+			]
+	    },
+	    
+	    {
+	        "name":"bAudiovisualActors",
+	        "reference":"work_reference",
+	        "description":"",
+	        "data":
+	        [
+	            {"name":"actors_role", "type":"string", "values":["employed", "contractor", "independent"]},
+	            {"name":"actors_contract_authorization", "type":"string", "values":["yes", "no", "unknown"]},
+	            {"name":"audiovisual_actors_publication_risk", "type":"string", "values":["high", "medium", "low", "unexisting"]}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"(actors_role='contractor' || actors_role='independent') && actors_contract_authorization='yes'", "result":{"block":"bAudiovisualActorsContract"}},
+	            {"exp":"true", "result":{"block":"bPersonBrandInfo"}}
+			]
+	    },
+	    
+	    {
+	        "name":"bAudiovisualActorsContract",
+	        "reference":"work_reference",
+	        "descrption":"Audiovisual actors contract",
+	        "data":
+	        [
+	            {"name":"actors_contract_reproduction", "type":"boolean"},
+	    	    {"name":"actors_contract_transformation", "type":"boolean"},
+	    	    {"name":"actors_contract_publication", "type":"boolean"},
+	    	    {"name":"actors_contract_distribution", "type":"boolean"},
+	    	    {"name":"actors_contract_time_limit", "type":"string"},
+	    	    {"name":"actors_contract_geo_limit", "type":"string"},
+	    	    {"name":"actors_contract_use_limit", "type":"string"},
+	    	    {"name":"actors_contract_payment_required", "type":"string", "values":["no", "unpayed", "payed"]}
+	        ],
+	        
+	        "rules":
+	    	[
+	    	    {"exp":"true", "result":{"block":"bPersonBrandInfo"}}
+	    	]
+	    },
+	    
+	    {
+	        "name":"bPhotoBuilding",
+	        "reference":"work_reference",
+	        "description":"",
+	        "data":
+	        [
+	            {"name":"is_public_building_photo", "type":"string", "values":["yes", "no", "unknown"]},
+	            {"name":"is_public_place_photo", "type":"string", "values":["yes", "no", "unknown"]}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"true", "result":{"block":"bPersonBrandInfo"}}
+			]
+	    },
+	    
+	    /* PHASE 3: Processes contained information */
+
+	    {
+	        "name":"bPersonBrandInfo",
+	        "reference":"work_reference",
+	        "description":"",
+	        "data":
+	        [
+	            {"name":"contains_people", "type":"boolean"},
+	            {"name":"contains_brands", "type":"boolean"},
+	            {"name":"contains_personal_info", "type":"boolean"},
+	            {"name":"contains_confidential_info", "type":"boolean"}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"contains_people=true", "result":{"block":"bPrivacy"}},
+	            {"exp":"contains_brands=true", "result":{"block":"bBrand"}},
+	            {"exp":"contains_personal_info=true", "result":{"block":"bPersonalData"}},
+	            {"exp":"contains_confidential_info=true", "result":{"block":"bConfidentiality"}},
+	            {"exp":"true", "result":{"block":"bRelatedWorks"}}
+			]
+	    },
+
+	    {
+	        "name":"bPrivacy",
+	        "reference":"work_reference",
+	        "description":"",
+	        "data":
+	        [
+	            {"name":"is_person_identifiable", "type":"string", "values":["yes","no","unknown"]},
+	            {"name":"person_name", "type":"string"},
+	            {"name":"public_person", "type":"boolean"},
+	            {"name":"person_in_public_place", "type":"boolean"},
+	            {"name":"person_for_information_purposes", "type":"boolean"},
+	            {"name":"privacy_comments", "type":"string"}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"is_person_identifiable=true && public_person=false && person_in_public_place=false && person_for_information_purposes=false", "result":{"block":"bPrivacyPerson"}},
+	            {"exp":"contains_brands=true", "result":{"block":"bBrand"}},
+	            {"exp":"contains_personal_info=true", "result":{"block":"bPersonalData"}},
+	            {"exp":"contains_confidential_info=true", "result":{"block":"bConfidentiality"}},
+	            {"exp":"true", "result":{"block":"bRelatedWorks"}}
+			]
+	    },
+	    
+	    {
+	        "name":"bPrivacyPerson",
+	        "reference":"work_reference",
+	        "description":"",
+	        "data":
+	        [
+	            {"name":"person_focused", "type":"boolean"},
+	            {"name":"impacts_honor_intimacy", "type":"boolean"},
+	            {"name":"person_has_authorised_publication", "type":"boolean"},
+	            {"name":"person_authorization_reference", "type":"string"},
+	            {"name":"privacy_geo_limit", "type":"string", "values":["undefined","Spain","worldwide"]},
+	            {"name":"privacy_time_limit", "type":"string"},
+	            {"name":"privacy_use_limit", "type":"string", "values":["undefined","internal","laboratory","internet","any"]},
+	            {"name":"privacy_person_publication_risk", "type":"string", "values":["high", "medium", "low", "unexisting"]},
+	            {"name":"privacy_person_comments", "type":"string"}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"contains_brands=true", "result":{"block":"bBrand"}},
+	            {"exp":"contains_personal_info=true", "result":{"block":"bPersonalData"}},
+	            {"exp":"contains_confidential_info=true", "result":{"block":"bConfidentiality"}},
+	            {"exp":"true", "result":{"block":"bRelatedWorks"}}
+			]
+	    },
+	    
+	    {
+	        "name":"bBrand",
+	        "reference":"work_reference",
+	        "description":"",
+	        "data":
+	        [
+	            {"name":"brand_name", "type":"string"},
+	            {"name":"brand_holder_name", "type":"string"},
+	            {"name":"is_used_for_commercial_traffic", "type":"string", "values":["yes","no","unknown"]},
+	            {"name":"brand_authorization", "type":"string", "values":["yes","no","unknown"]},
+	            {"name":"brand_authorization_reference", "type":"string"},
+	            {"name":"brand_authorization_use_limit", "type":"string"},
+	            {"name":"brand_publication_risk", "type":"string", "values":["high", "medium", "low", "unexisting"]},
+	            {"name":"brand_comments", "type":"string"}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"contains_personal_info=true", "result":{"block":"bPersonalData"}},
+	            {"exp":"contains_confidential_info=true", "result":{"block":"bConfidentiality"}},
+	            {"exp":"true", "result":{"block":"bRelatedWorks"}}
+			]
+	    },
+	    
+	    {
+	        "name":"bPersonalData",
+	        "reference":"work_reference",
+	        "description":"",
+	        "data":
+	        [
+	            {"name":"personal_data_type", "type":"string"},
+	            {"name":"personal_data_source", "type":"string"},
+	            {"name":"personal_data_treatment", "type":"string"},
+	            {"name":"personal_data_is_person_informed", "type":"boolean"},
+	            {"name":"personal_data_information_reference", "type":"string"},
+	            {"name":"personal_data_consent", "type":"string"},
+	            {"name":"personal_data_web_publication", "type":"boolean"},
+	            {"name":"personal_data_purposes", "type":"string", "values":["internal_use","publication","third_party_communication","other"]},
+	            {"name":"personal_data_publication_risk", "type":"string", "values":["high", "medium", "low", "unexisting"]},
+	            {"name":"personal_data_comments", "type":"string"}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"contains_confidential_info=true", "result":{"block":"bConfidentiality"}},
+	            {"exp":"true", "result":{"block":"bRelatedWorks"}}
+			]
+	    },
+	    
+	    {
+	        "name":"bConfidentiality",
+	        "reference":"work_reference",
+	        "description":"",
+	        "data":
+	        [
+	            {"name":"confidential_information_type", "type":"string"},
+	            {"name":"confidential_holder", "type":"string"},
+	            {"name":"confidential_communication_date", "type":"string"},
+	            {"name":"confidential_communication_type", "type":"string"},
+	            {"name":"confidential_communication_source", "type":"string"},
+	            {"name":"confidential_communication_reference", "type":"string"},	            
+	            {"name":"confidentiality_obligations", "type":"string", "values":["explicit","implicit","no"]},
+	            {"name":"confidentiality_obligations_reference", "type":"string"},
+	            {"name":"confidential_info_use_limit", "type":"boolean"},
+	            {"name":"confidential_info_publication_risk", "type":"string", "values":["high", "medium", "low", "unexisting"]},
+	            {"name":"confidentiality_comments", "type":"string"}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"true", "result":{"block":"bRelatedWorks"}}
+			]
+	    },
+	    
+	    /* PHASE 4: Related works */
+	    
+	    {
+	        "name":"bRelatedWorks",
+	        "reference":"work_reference",
+	        "description":"",
+	        "data":
+	        [
+	            {"name":"is_part_of_edited_work", "type":"boolean"},
+	            {"name":"contains_other_works", "type":"boolean"}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"is_part_of_edited_work", "result":{"block":"bContainerWork"}},
+	            {"exp":"contains_other_works", "result":{"block":"bContainedWorks"}},
+	            {"exp":"true", "result":{"block":"bFinal"}}
+	        ]
+	    },
+	    
+	    {
+	        "name":"bContainerWork",
+	        "description":"",
+	        "reference":"work_reference",
+	        "data":
+	        [
+	            {"name":"container_work_result", "type":"legal_result", "values":["green", "yellow", "orange", "red"]}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"contains_other_works", "result":{"block":"bContainedWorks"}},
+	            {"exp":"true", "result":{"block":"bFinal"}}
+			]
+	    },
+	    
+	    {
+	        "name":"bContainedWorks",
+	        "description":"",
+	        "reference":"work_reference",
+	        "data":
+	        [
+	            {"name":"contained_works_result", "type":"legal_result", "values":["green", "yellow", "orange", "red"]}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"true", "result":{"block":"bFinal"}}
+			]
+	    },
+	    
+	    /* TODO: RELATED WORKS */
+	    
+	    /* FINAL BLOCK WHICH EVALUATES COLOR RESULT */
+	    
+	    {
+	        "name":"bFinal",
+	        "reference":"work_reference",
+	        "description":"",
+	        "data":
+	        [
+	            {"name":"final_comments", "type":"string"}
+	        ],
+	        
+	        "rules":
+	        [
+	            {"exp":"orphan_risk='high'", "result":{"color":"red"}},
+	            {"exp":"assigment_contract_exists=false && cc_license='no_cc'", "result":{"color":"red"}},
+	            {"exp":"speaker_name='' || speaker_contract=false", "result":{"color":"red"}},
+	            {"exp":"music_publication_authorization='no' || music_publication_risk='high'", "result":{"color":"red"}},
+	            {"exp":"interview_publication_authorization='no' || interview_publication_risk='high'", "result":{"color":"red"}},
+	            {"exp":"actors_contract_authorization='no' || audiovisual_actors_publication_risk='high'", "result":{"color":"red"}},
+	            {"exp":"is_public_building_photo='no'", "result":{"color":"red"}},
+	            {"exp":"is_public_place_photo='no'", "result":{"color":"red"}},
+	            {"exp":"impacts_honor_intimacy=true || privacy_person_publication_risk='high'", "result":{"color":"red"}},
+	            {"exp":"brand_publication_risk='high'", "result":{"color":"red"}},
+	            {"exp":"personal_data_is_person_informed=false || personal_data_consent=false || personal_data_publication_risk='high'", "result":{"color":"red"}},
+	            {"exp":"confidentiality_obligations='explicit' || (confidentiality_obligations='implicit' && confidential_info_publication_risk='high')", "result":{"color":"red"}},
+	            {"exp":"container_work_result='red'", "result":{"color":"red"}},
+	            {"exp":"contained_works_result='red'", "result":{"color":"red"}},
+	            
+	            {"exp":"is_author_known=true && author_role='other'", "result":{"color":"orange"}},
+	            {"exp":"is_author_known=true && author_role='contractor' && (payment_required='unpayed' || contractor_name='') ", "result":{"color":"orange"}},
+	            {"exp":"is_author_known=true && author_role='independent' && payment_required='unpayed'", "result":{"color":"orange"}},
+	            {"exp":"orphan_risk='medium' || holder_research='unknown' || origin_known='unknown' || work_under_protection='unknown' ", "result":{"color":"orange"}},
+	            {"exp":"music_publication_authorization='unknown' || music_publication_risk='medium'", "result":{"color":"orange"}},
+	            {"exp":"interview_publication_authorization='unknown' || interview_publication_risk='medium'", "result":{"color":"orange"}},
+	            {"exp":"actors_contract_authorization='unknown' || audiovisual_actors_publication_risk='medium'", "result":{"color":"orange"}},
+	            {"exp":"is_public_building_photo='unknown'", "result":{"color":"orange"}},
+	            {"exp":"is_public_place_photo='unknown'", "result":{"color":"orange"}},
+	            {"exp":"is_person_identifiable='unknown'", "result":{"color":"orange"}},
+	            {"exp":"person_for_information_purposes=false || person_in_public_place=false", "result":{"color":"orange"}},
+	            {"exp":"privacy_person_publication_risk='medium' || person_has_authorised_publication=false", "result":{"color":"orange"}},
+	            {"exp":"brand_publication_risk='medium' || brand_authorization_use_limit!=''", "result":{"color":"orange"}},
+	            {"exp":"personal_data_web_publication=false || personal_data_purposes='other' || personal_data_publication_risk='medium'", "result":{"color":"orange"}},
+	            {"exp":"confidentiality_obligations='implicit' && confidential_info_publication_risk='medium' ", "result":{"color":"orange"}},
+	            {"exp":"container_work_result='orange'", "result":{"color":"orange"}},
+	            {"exp":"contained_works_result='orange'", "result":{"color":"orange"}},
+	            
+	            {"exp":"orphan_risk='low'", "result":{"color":"yellow"}},
+	            {"exp":"music_publication_risk='low'", "result":{"color":"yellow"}},
+	            {"exp":"interview_publication_risk='low'", "result":{"color":"yellow"}},
+	            {"exp":"audiovisual_actors_publication_risk='low'", "result":{"color":"yellow"}},
+	            {"exp":"(reproduction=true || transformation=true) && publication=false", "result":{"color":"yellow"}},
+	            {"exp":"(speaker_contract_reproduction=true || speaker_contract_transformation=true) && speaker_contract_publication=false", "result":{"color":"yellow"}},
+	            {"exp":"(actors_contract_reproduction=true || actors_contract_transformation=true) && actors_contract_publication=false", "result":{"color":"yellow"}},
+	            {"exp":"privacy_geo_limit='Spain' || privacy_person_publication_risk='low'", "result":{"color":"yellow"}},
+	            {"exp":"privacy_use_limit='internal' || privacy_use_limit='laboratory'", "result":{"color":"yellow"}},
+	            {"exp":"brand_publication_risk='low'", "result":{"color":"yellow"}},
+	            {"exp":"personal_data_purposes='internal_use' || personal_data_publication_risk='low'", "result":{"color":"yellow"}},
+	            {"exp":"confidential_info_publication_risk='low'", "result":{"color":"yellow"}},
+	            {"exp":"container_work_result='yellow'", "result":{"color":"yellow"}},
+	            {"exp":"contained_works_result='yellow'", "result":{"color":"yellow"}},
+	            
+	            {"exp":"true", "result":{"color":"green"}}
+	        ]
+	    }
+	]
+}
