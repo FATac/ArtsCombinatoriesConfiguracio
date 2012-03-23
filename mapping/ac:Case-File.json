@@ -49,7 +49,8 @@
 			 	{   
 			        "type":"search",
 			        "value":["CaseFile:"],
-			        "path":["ac:Case-File.id"]
+			        "path":["ac:Case-File.id"],
+				"filter":["class","Year"]
 			    }
 			] 
 		},
