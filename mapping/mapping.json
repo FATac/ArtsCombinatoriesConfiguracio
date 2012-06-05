@@ -13,6 +13,21 @@
 			"type":"string",
 			"path":["ac:Event.ac:isReferencedBy", "ac:SpecialObject.ac:isReferencedBy", "ac:Media.ac:containedBy"]
 		},
+		
+		{
+			"name":"Title",
+			"type":"text",
+			"path":[
+				"ac:Event.ac:Title",
+				"ac:Person.ac:Name",
+				"ac:Case-File.ac:references=*.ac:Title",
+				"ac:Organisation.ac:Name",
+				"ac:Media.ac:Title",
+		        "ac:Collection.ac:Title"
+			],
+			"multilingual":"yes"
+			
+		},
 	
 	    {
 			"name":"Description",
