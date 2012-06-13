@@ -108,7 +108,10 @@
         	"rules":
         	[
 				{"exp":"Llicencia='Copyright'", "result":{"block":"bCopyright"}},
-				{"exp":"true", "result":{"block":"bContingut"}}
+				{"exp":"Llicencia='CreativeCommons by'", "result":{"block":"bContingut", "license":"ac:hasLicense=Creative_Commons_by"}},
+				{"exp":"Llicencia='MIT License'", "result":{"block":"bContingut", "license":"ac:hasLicense=MIT_Liecense"}},
+				{"exp":"Llicencia='PHP License'", "result":{"block":"bContingut", "license":"ac:hasLicense=PHP_License"}}
+				
         	]
         },
         
@@ -165,7 +168,8 @@
         		{"exp":"Conte_informacio_personal=true || Conte_informacio_confidencial=true", "result":{"color":"red"}},
         		{"exp":"Conte_persones=true", "result":{"block":"bPersones"}},
         		{"exp":"Conte_marques=true", "result":{"block":"bMarques"}},
-        		{"exp":"Conte_altres_obres_o_documents=true", "result":{"block":"bContingutAltres"}}
+        		{"exp":"Conte_altres_obres_o_documents=true", "result":{"block":"bContingutAltres"}},
+                {"exp":"true", "result":{"color":"green"}}
         	]
         },
         
