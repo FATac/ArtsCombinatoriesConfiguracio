@@ -8,7 +8,7 @@
 			"category":"yes"
 		},    
 	
-	    {
+	    	{
 			"name":"CaseFile",
 			"type":"string",
 			"path":["ac:Event.ac:isReferencedBy", "ac:SpecialObject.ac:isReferencedBy", "ac:Media.ac:containedBy"]
@@ -28,8 +28,26 @@
 			"multilingual":"yes"
 			
 		},
+
+		{
+			"name":"FirstName",
+			"type":"text",
+			"path":[
+				"ac:Person.ac:givenName"
+			],
+			"sort":"yes"
+		},
+
+		{
+			"name":"LastName",
+			"type":"text",
+			"path":[
+				"ac:Person.ac:familyName"
+			],
+			"sort":"yes"
+		},
 	
-	    {
+	    	{
 			"name":"Description",
 		    "type":"text",
 		    "path":["ac:Event.ac:Title",
