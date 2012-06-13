@@ -12,8 +12,20 @@
 	    {   
 		"type":"search",
 	        "name":"Explorar",
-		"sort":"AlphabeticalOrder asc",
-		"sortFields":["AlphabeticalOrder+asc", "ChronologicalOrder+desc"]
-	    }
+		"sort":"AlphabeticalOrder asc"
+	    },
+
+            {
+                "type":"search",
+                "name":"Agents",
+                "sort":"LastName asc, FirstName asc"
+            },
+
+            {
+                "type":"search",
+                "name":"Events",
+                "sort":"ChronologicalOrder desc"
+            }
+	
 	]
 }
