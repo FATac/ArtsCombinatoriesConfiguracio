@@ -7,11 +7,13 @@
 			"name":"header",
 			"data":[
 		
-		    	{
-					"name":"Title",
+			    	{
+					"name":"Titleiblalal",
 					"type":"text",
 					"path":["ac:Media.ac:Title"]
+				
 				}
+
 			]
 		},
 		
@@ -20,22 +22,92 @@
 			"data":[
 
 			    {
-				"name":"ArtWork",
-				"type":"linkedObjects",
-				"path":["ac:Media.ac:represents=*.ac:Title"]
+				"name":"Photographer",
+				"type":"text",
+				"path":["ac:Media.ac:carriedOutBy=ac:Agent.ac:Name"]
 			    },
-			    
+
 			    {
-			        "name":"Description",
+				"name":"Date",
+				"type":"text",
+				"path":["ac:Media.ac:created"]
+			    },
+
+			    {
 			        "type":"text",
 			        "path":["ac:Media.ac:Description"]
 			    },
-			    
+
 			    {
-			        "name":"Format",
-			        "type":"text",
-			        "path":["ac:Media.ac:format"]
+				"name":"Represents",
+				"type":"linkedObject",
+				"path":["ac:Media.ac:represents=ac:Art_Work.ac:Name", "ac:Media.ac:containedBy=ac:Case-File.ac:references"]
+			    }
+			    
+			]  
+		},
+		
+		{
+			"name":"content",
+			"data":[
+			    {
+			        "type":"media",
+			        "path":["ac:Media.ac:Uri"]
 			    },
+
+			    {
+				"name":"License",
+				"type":"text",
+				"path":["ac:Media.ac:hasLicense=*.ac:Homepage"]
+			    }
+
+			]  
+		},
+
+		{
+			"name":"footer",
+			"data":[
+					
+                            {
+                                "name":"Format",
+                                "type":"text",
+                                "path":["ac:Media.ac:format"]
+                            },
+
+			    {
+				"name":"Place",
+				"type":"text",
+				"path":["ac:Media.ac:tookPlaceAt=ac:Location.ac:Name"]
+			    },
+
+			    {
+                                "name":"HasPhisicalVersion",
+                                "type":"text",
+                                "path":["ac:Media.ac:hasPhysicallVersion"]
+                            },
+
+			    {
+                                "name":"Situation",
+                                "type":"text",
+                                "path":["ac:Media.ac:CurrentlySituation"]
+                            },
+
+			    {
+				"name":"CreditLine",
+				"type":"text",
+				"path":["ac:Media.ac:CreditLine"]
+			    },
+
+			    {
+				"name":"Collection",
+				"type":"linkedObjects",
+				"path":["ac:Media.ac:isCollectedIn=ac:Collection.ac:Title"]
+			    },
+
+			    {
+                                "type":"text",
+                                "value":[" "]
+                            },
 
 			    {
 				"name":"Size",
@@ -44,36 +116,65 @@
 			    },
 
 			    {
-				"name":"Resolution",
-				"type":"text",
-				"path":["ac:Media.ac:Resolution"]
-			    },
-			    
+                                "name":"OriginalSource",
+                                "type":"text",
+                                "path":["ac:Media.ac:OriginalSource"]
+                            },
+
 			    {
-			        "name":"OriginalSource",
-			        "type":"text",
-			        "path":["ac:Media.ac:OriginalSource"]
+                                "name":"Resolution",
+                                "type":"text",
+                                "path":["ac:Media.ac:Resolution"]
+                            },
+
+			    {
+				"name":"TypeDocumentary",
+				"type":"text",
+				"path":["ac:Media.ac:isTypeDocumentary=*.ac:Name"]
 			    },
 
 			    {
-			        "name":"Authors",
-			        "type":"linkedObjects",
-			        "path":[
-			        	"ac:Media.ac:containedBy=ac:Case-File.ac:references=ac:Event.ac:applicationOf=*.ac:performedBy=*.ac:Name",
-			        	"ac:Media.ac:containedBy=ac:Case-File.ac:references=ac:Event.ac:applicationOf=*.ac:performedBy=*.ac:Title"
-			        ]
+				"name":"Publication",
+				"type":"linkedObjects",
+				"path":["ac:Media.ac:hasPublication=*.ac:Title"]
+			    },
+
+                            {
+                                "type":"text",
+                                "value":[" "]
+                            },
+
+                            {
+                                "name":"AspectRate",
+                                "type":"text",
+                                "path":["ac:Media.ac:AspectRate"]
+                            },
+
+			    {
+				"name":"CameraModel",
+				"type":"text",
+				"path":["ac:Media.ac:CameraModel"]
+			    },
+
+                            {
+                                "name":"ColorModel",
+                                "type":"text",
+                                "path":["ac:Media.ac:ColorMode"]
+                            },
+
+			    {
+				"name":"Orientation",
+				"type":"text",
+				"path":["ac:Media.ac:Orientation"]
+			    },
+
+			    {
+				"name":"WidthImage",
+				"type":"text",
+				"path":["ac:Media.ac:WithImage"]
 			    }
-			]  
-		},
-		
-		{
-			"name":"content",
-			"data":[
-			 	{
-			        "type":"media",
-			        "path":["ac:Media.ac:Uri"]
-			    }
-			]  
+
+			]
 		}
 	]
 }

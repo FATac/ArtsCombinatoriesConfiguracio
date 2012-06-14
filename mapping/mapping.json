@@ -31,7 +31,7 @@
 
 		{
 			"name":"FirstName",
-			"type":"text",
+			"type":"string",
 			"path":[
 				"ac:Person.ac:givenName"
 			],
@@ -40,7 +40,7 @@
 
 		{
 			"name":"LastName",
-			"type":"text",
+			"type":"string",
 			"path":[
 				"ac:Person.ac:familyName"
 			],

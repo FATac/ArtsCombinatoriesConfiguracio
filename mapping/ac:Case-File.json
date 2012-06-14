@@ -27,18 +27,48 @@
 					"type":"text",
 					"value":[" "]
 				},
+
+				{
+					"type":"text",
+					"name":"Year",
+					"path":["ac:Case-File.ac:StartDate", "ac:Case-File.ac:EndDate"]
+				},
 			    
 				{
-			        "name":"Description",
-			        "type":"text",
-			        "path":["ac:Case-File.ac:Description"]
-			    },
-			    
-			    {
-			        "name":"Collections",
-			        "type":"linkedObjects",
-			        "path":["ac:Case-File.ac:hasMedia=*.ac:isCollectedIn=ac:Collection.ac:Title"]
-			    }
+				        "name":"Description",
+				        "type":"text",
+				        "path":["ac:Case-File.ac:Description"]
+				},
+
+                                {
+                                        "type":"text",
+                                        "value":[" "]
+                                },
+
+				{
+					"name":"Volum",
+					"type":"text",
+					"path":["ac:Case-File.ac:Volum"]
+				},
+
+				{
+					"name":"RegisterNumber",
+					"type":"text",
+					"path":["ac:Case-File.ac:RegisterNumber"]
+				},
+
+				{
+					"name":"Manuscript",
+					"type":"text",
+					"path":["ac:Case-File.ac:Manuscript"]
+				},
+
+				{
+					"name":"Holding",
+					"type":"text",
+					"path":["ac:Case-File.ac:Holding"]
+				}
+
 			]
 		},
 		

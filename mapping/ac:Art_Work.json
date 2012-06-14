@@ -9,7 +9,12 @@
 		
 			    	{
 					"type":"text",
-					"path":["ac:Art_Work.ac:Title"]
+					"path":["ac:Art_Work.ac:Title","ac:Art_Work.ac:Date"]
+				},
+
+				{
+					"type":"text",
+					"path":["ac:Art_Work.ac:Subtitle"]
 				}
 			]
 		},
@@ -20,7 +25,8 @@
 
                                {
                                         "type":"text",
-                                        "path":["ac:Art_Work.ac:Date"]
+					"name":"Author",
+                                        "path":["ac:Art_Work.ac:carriedOutBy=ac:Person.ac:Name", "ac:Publication.ac:applicationOf=ac:Author.ac:performedBy=ac:Agent.ac:Name"]
                                 },
 
                                 {
@@ -31,56 +37,56 @@
 
 				{
 					"type":"text",
-					"name":"Mides",
-					"path":["ac:Art_Work.ac:measurement"]
+					"name":"License",
+					"path":["ac:Art_Work.ac:hasLicense=ac:License.ac:Homepage"]
 				},
 
                                 {
                                         "type":"text",
-                                        "name":"Kind",
-                                        "path":["ac:Art_Work.ac:hasType=ac:KindArtWork.ac:Name"]
+                                        "value":[" "]
                                 },
 
-				{
-					"type":"text",
-					"value":[" "]
-				},
+                                {
+                                        "type":"text",
+                                        "name":"Cover",
+                                        "path":["ac:Art_Work.ac:Cover"]
+                                },
 
-				{
-					"type":"text",
-					"name":"NumFoto",
-					"path":["ac:Art_Work.ac:NumberT"]
-				}, 
-		
-				{
-					"type":"text",
-					"name":"Localitzacio",
-					"path":["ac:Art_Work.ac:CurrentSituation"]
-				},
+                                {
+                                        "type":"text",
+                                        "name":"NumberOfCopies",
+                                        "path":["ac:Art_Work.ac:NumberOfCopies"]
+                                },
 
-				{
-					"type":"text",
-					"name":"Valoracio",
-					"path":["ac:Art_Work.ac:EstimatedValue"]
-				},
+                                {
+                                        "type":"text",
+                                        "name":"PagesNumber",
+                                        "path":["ac:Art_Work.ac:NumberofPages"]
+                                },
+
+                                {
+                                        "type":"text",
+                                        "name":"SheetNumber",
+                                        "path":["ac:Art_Work.ac:SheetNumber"]
+                                },
+
+                                {
+                                        "type":"text",
+                                        "name":"Watermark",
+                                        "path":["ac:Art_Work.ac:Watermark"]
+                                },
+
+                                {
+                                        "type":"text",
+                                        "name":"Mides",
+                                        "path":["ac:Art_Work.ac:measurement"]
+                                },
 
 				{
 					"type":"linkedObjects",
 					"name":"Expedient",
 					"path":["ac:Art_Work.ac:isReferencedBy=*.ac:Title"]
-				},
-	
-			    {
-			        "name":"Authors",
-			        "type":"linkedObjects",
-			        "path":["ac:Art_Work.ac:applicationOf"]
-			    },
-			    
-			    {
-			        "name":"Editors",
-			        "type":"linkedObjects",
-			        "path":["ac:Art_Work.ac:applicationOf=ac:Editor.ac:performedBy=ac:Agent.ac:Name"]
-			    }
+				}	
 			]  
 		},
 		
@@ -91,7 +97,7 @@
 		        {
 		            "name":"Representation",
 		            "type":"objects",
-			        "path":["ac:Art_Work.ac:representedBy"]
+			    "path":["ac:Art_Work.ac:representedBy"]
 		        }
 		    ]
 		}

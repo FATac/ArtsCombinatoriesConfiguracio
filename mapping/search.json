@@ -19,7 +19,7 @@
             {
                 "type":"search",
                 "name":"Agents",
-                "sort":"LastName asc, FirstName asc"
+                "sort":"LastName asc"
             },
 
             {

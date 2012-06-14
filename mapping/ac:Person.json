@@ -9,7 +9,7 @@
 		
 		    	{
 					"type":"text",
-					"path":["ac:Person.ac:Name", "ac:Person.ac:BirthDate"]
+					"path":["ac:Person.ac:Name"]
 				}
 			]
 		},
@@ -17,22 +17,43 @@
 		{
 			"name":"body",
 			"data":[
+
+				{
+					"type":"text",
+					"name":"Birth",
+					"path":["ac:Person.ac:bornIn=ac:Location.ac:Name","ac:Person.ac:BirthDate"]
+				},
+
+				{
+					"type":"text",
+					"name":"Death",
+					"path":["ac:Person.ac:diedIn=ac:Location.ac:Name", "ac:Person.ac:DeathDate"]
+				},
 			
 			 	{
-			        "type":"text",
-			        "path":["ac:Person.ac:Bio"]
-			    },
+				        "type":"text",
+				        "path":["ac:Person.ac:Bio"]
+			    	},
 			    
 			    {
-			        "name":"Author",
+			        "name":"Participation",
 			        "type":"linkedObjects",
 			        "path":[
-			         	"ac:Person.ac:performsRole=ac:Producer.ac:appliesOn=*.ac:Title",
-			         	"ac:Person.ac:performsRole=ac:Writer.ac:appliesOn=*.ac:Title",
-			         	"ac:Person.ac:performsRole=ac:Artist.ac:appliesOn=*.ac:Title"
+			         	"ac:Person.ac:performsRole=*.ac:appliesOn=*.ac:Title"
 			        ]
 			    }
 			]  
+		},
+
+		{
+			"name":"content",
+			"data":[
+				{
+					"type":"objects",
+					"name":"Publications",
+					"path":["ac:Person.ac:hasPublications"]
+				}
+			]
 		}
 	]
 }

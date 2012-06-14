@@ -7,10 +7,16 @@
 			"name":"header",
 			"data":[
 		
-		    	{
+			    	{
 					"type":"text",
 					"path":["ac:FrameActivity.ac:Title"]
-				}
+				},
+
+                                {
+                                        "type":"text",
+                                        "path":["ac:FrameActivity.ac:Subtitle"]
+                                }
+
 			]
 		},
 		
@@ -18,10 +24,10 @@
 			"name":"body",
 			"data":[
 			    
-			    {
+			    	{
 					"name":"Year",
 					"type":"text",
-					"path":["ac:FrameActivity.ac:StartDate"]
+					"path":["ac:FrameActivity.ac:StartDate", "ac:FrameActivity.ac:EndDate"]
 				},
 			    
 				{
@@ -30,22 +36,23 @@
 				},
 				
 				{
-				    "name":"Creator",
-				    "type":"linkedObjects",
-					"path":["ac:FrameActivity.ac:applicationOf=ac:Producer.ac:performedBy=*.ac:Name"]
-				},
-				
-				{
-				    "name":"Curator",
-				    "type":"text",
-					"path":["ac:FrameActivity.ac:applicationOf=ac:Curator.ac:performedBy=*.ac:Name"]
-				},
+					"name":"Creator",
+					"type":"linkedObjects",
+					"path":["ac:FrameActivity.ac:carriedOutBy=*.ac:Name"]
+				},				
 				
 				{
 					"name":"Places",
 					"type":"text",
-					"path":["ac:FrameActivity.ac:tookPlaceAt=ac:Location.ac:Name"]
-				}
+					"path":["ac:FrameActivity.ac:tookPlaceAt=ac:Location.ac:Name", "ac:FrameActivity.ac:tookPlaceOnorWithin=ac:Location.ac:Name"]
+				},
+
+                                {
+                                        "name":"CaseFile",
+                                        "type":"linkedObjects",
+                                        "path":["ac:FrameActivity.ac:isReferencedBy=*.ac:Title"]
+                                }  
+
 				
 			]
 		},
@@ -53,12 +60,18 @@
 		{
 			"name":"content",
 			"data":[
+
+                                {
+                                        "name":"RelatedActivites",
+                                        "type":"objects",
+                                        "path":["ac:FrameActivity.ac:hasSuperActivity"]
+                                },
 			    
 				{
 					"name":"RelatedActivites",
 					"type":"objects",
 					"path":["ac:FrameActivity.ac:hasSpecificActivity"]
-				},
+				},					
 				
 				{
 					"name":"RelatedPublications",
@@ -66,11 +79,11 @@
 					"path":["ac:FrameActivity.ac:hasPublication"]
 				},
 		    
-		    	{
-		            "name":"Representation",
-		            "type":"objects",
-			        "path":["ac:FrameActivity.ac:representedBy"]
-		        }
+			    	{
+			        	"name":"Representation",
+					"type":"objects",
+				        "path":["ac:FrameActivity.ac:representedBy"]
+		  		}
 		    ]
 		}
 	]

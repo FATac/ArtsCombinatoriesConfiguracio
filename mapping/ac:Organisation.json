@@ -28,15 +28,15 @@
 					"type":"text",
 					"path":["ac:Organisation.ac:isLocatedAt=*.ac:Name"]
 			    },
-			    
-			    {
-					"type":"text",
-					"value":[" "]
-			    },
+
+                            {
+                                        "type":"text",
+                                        "path":["ac:Organisation.ac:Bio"]
+                            },				
 			    
 			    {
 					"name":"Publications",
-					"type":"objects",
+					"type":"linkedObjects",
 					"path":["ac:Organisation.ac:performsRole=*.ac:appliesOn"]
 			    }
 			    

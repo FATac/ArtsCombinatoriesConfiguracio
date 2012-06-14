@@ -110,8 +110,8 @@
 				{"exp":"Llicencia='Copyright'", "result":{"block":"bCopyright"}},
 				{"exp":"Llicencia='CreativeCommons by'", "result":{"block":"bContingut", "license":"ac:hasLicense=Creative_Commons_by"}},
 				{"exp":"Llicencia='MIT License'", "result":{"block":"bContingut", "license":"ac:hasLicense=MIT_Liecense"}},
-				{"exp":"Llicencia='PHP License'", "result":{"block":"bContingut", "license":"ac:hasLicense=PHP_License"}}
-				
+				{"exp":"Llicencia='PHP License'", "result":{"block":"bContingut", "license":"ac:hasLicense=PHP_License"}},
+				{"exp":"true", "result":{"block":"bContingut"}}				
         	]
         },
         
