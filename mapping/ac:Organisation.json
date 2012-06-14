@@ -36,10 +36,9 @@
 			    
 			    {
 					"name":"Publications",
-					"type":"linkedObjects",
+					"type":"linkedObject",
 					"path":["ac:Organisation.ac:performsRole=*.ac:appliesOn"]
-			    }
-			    
+			    }			    
 			    
 			]  
 		}

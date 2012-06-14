@@ -31,13 +31,13 @@
 
                             {
                                 "name":"CaseFile",
-                                "text":"linkedObjects",
+                                "type":"linkedObjects",
                                 "path":["ac:Publication.ac:isReferencedBy=*.ac:Title"]
                             },
 
                             {
                                 "name":"PartOf",
-                                "text":"linkedObjects",
+                                "type":"linkedObjects",
                                 "path":["ac:Publication.ac:PartOf=*.ac:Title"]
                             },
 
