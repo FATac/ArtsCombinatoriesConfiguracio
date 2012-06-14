@@ -12,6 +12,7 @@
 	    {   
 		"type":"search",
 	        "name":"Explorar",
+		"sortFields":["AlphabeticalOrder+asc", "ChronologicalOrder+desc"],
 		"sort":"AlphabeticalOrder asc"
 	    },
 
