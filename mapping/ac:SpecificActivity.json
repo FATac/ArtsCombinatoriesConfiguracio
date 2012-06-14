@@ -1,0 +1,84 @@
+{
+	"className":"ac:FrameActivity",
+	
+	"sections":
+	[
+		{
+			"name":"header",
+			"data":[
+		
+			    	{
+					"type":"text",
+					"path":["ac:FrameActivity.ac:Title"]
+				},
+
+                                {
+                                        "type":"text",
+                                        "path":["ac:FrameActivity.ac:Subtitle"]
+                                }
+
+			]
+		},
+		
+		{
+			"name":"body",
+			"data":[
+			    
+			    	{
+					"name":"Year",
+					"type":"text",
+					"path":["ac:FrameActivity.ac:StartDate", "ac:FrameActivity.ac:EndDate"]
+				},
+			    
+				{
+					"type":"text",
+					"path":["ac:FrameActivity.ac:Description"]
+				},
+				
+				{
+					"name":"Creator",
+					"type":"linkedObjects",
+					"path":["ac:FrameActivity.ac:carriedOutBy=*.ac:Name"]
+				},				
+				
+				{
+					"name":"Places",
+					"type":"text",
+					"path":["ac:FrameActivity.ac:tookPlaceAt=ac:Location.ac:Name", "ac:FrameActivity.ac:tookPlaceOnorWithin=ac:Location.ac:Name"]
+				},
+
+                                {
+                                        "name":"CaseFile",
+                                        "type":"linkedObjects",
+                                        "path":["ac:FrameActivity.ac:isReferencedBy=*.ac:Title"]
+                                }  
+
+				
+			]
+		},
+		
+		{
+			"name":"content",
+			"data":[
+
+				{
+					"name":"RelatedActivites",
+					"type":"objects",
+					"path":["ac:FrameActivity.ac:specificActivityOf"]
+				},					
+				
+				{
+					"name":"RelatedPublications",
+					"type":"objects",
+					"path":["ac:FrameActivity.ac:hasPublication"]
+				},
+		    
+			    	{
+			        	"name":"Representation",
+					"type":"objects",
+				        "path":["ac:FrameActivity.ac:representedBy"]
+		  		}
+		    ]
+		}
+	]
+}

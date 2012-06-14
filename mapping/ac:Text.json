@@ -1,0 +1,180 @@
+{
+	"className":"ac:Media",
+	
+	"sections":
+	[
+		{
+			"name":"header",
+			"data":[
+		
+			    	{
+					"name":"Title",
+					"type":"text",
+					"path":["ac:Media.ac:Title"]
+				}
+			]
+		},
+		
+		{
+			"name":"body",
+			"data":[
+
+			    {
+				"name":"Writer",
+				"type":"text",
+				"path":["ac:Media.ac:carriedOutBy=ac:Agent.ac:Name"]
+			    },
+
+			    {
+				"name":"Date",
+				"type":"text",
+				"path":["ac:Media.ac:created"]
+			    },
+
+			    {
+			        "type":"text",
+			        "path":["ac:Media.ac:Description"]
+			    },
+
+			    {
+				"name":"PagesNumber",
+				"type":"text",
+				"path":["ac:Media.ac:NumberofPages"]
+			    }		
+
+			    
+			]  
+		},
+		
+		{
+			"name":"content",
+			"data":[
+
+			    {
+			        "type":"media",
+			        "path":["ac:Media.ac:Uri"]
+			    },
+
+			    {
+				"name":"License",
+				"type":"text",
+				"path":["ac:Media.ac:hasLicense=*.ac:Homepage"]
+			    }
+
+			]  
+		},
+
+		{
+			"name":"footer",
+			"data":[
+					
+                            {
+                                "name":"Format",
+                                "type":"text",
+                                "path":["ac:Media.ac:format"]
+                            },
+
+			    {
+				"name":"Place",
+				"type":"text",
+				"path":["ac:Media.ac:tookPlaceAt=ac:Location.ac:Name"]
+			    },
+
+			    {
+                                "name":"HasPhisicalVersion",
+                                "type":"text",
+                                "path":["ac:Media.ac:hasPhysicallVersion"]
+                            },
+
+			    {
+                                "name":"Situation",
+                                "type":"text",
+                                "path":["ac:Media.ac:CurrentlySituation"]
+                            },
+
+			    {
+				"name":"CreditLine",
+				"type":"text",
+				"path":["ac:Media.ac:CreditLine"]
+			    },
+
+			    {
+				"name":"Collection",
+				"type":"linkedObjects",
+				"path":["ac:Media.ac:isCollectedIn=ac:Collection.ac:Title"]
+			    },
+
+			    {
+                                "type":"text",
+                                "value":[" "]
+                            },
+
+			    {
+				"name":"Size",
+				"type":"text",
+				"path":["ac:Media.ac:FileSize"]
+			    },
+
+			    {
+                                "name":"OriginalSource",
+                                "type":"text",
+                                "path":["ac:Media.ac:OriginalSource"]
+                            },
+
+			    {
+                                "name":"Resolution",
+                                "type":"text",
+                                "path":["ac:Media.ac:Resolution"]
+                            },
+
+			    {
+				"name":"TypeDocumentary",
+				"type":"text",
+				"path":["ac:Media.ac:isTypeDocumentary=*.ac:Name"]
+			    },
+
+			    {
+				"name":"Publication",
+				"type":"linkedObjects",
+				"path":["ac:Media.ac:hasPublication=*.ac:Title"]
+			    },
+
+                            {
+                                "type":"text",
+                                "value":[" "]
+                            },
+
+                            {
+                                "name":"AspectRate",
+                                "type":"text",
+                                "path":["ac:Media.ac:AspectRate"]
+                            },
+
+			    {
+				"name":"CameraModel",
+				"type":"text",
+				"path":["ac:Media.ac:CameraModel"]
+			    },
+
+                            {
+                                "name":"ColorModel",
+                                "type":"text",
+                                "path":["ac:Media.ac:ColorMode"]
+                            },
+
+			    {
+				"name":"Orientation",
+				"type":"text",
+				"path":["ac:Media.ac:Orientation"]
+			    },
+
+			    {
+				"name":"WidthImage",
+				"type":"text",
+				"path":["ac:Media.ac:WithImage"]
+			    }
+
+			]
+		}
+	]
+}
