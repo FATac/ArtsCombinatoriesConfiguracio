@@ -13,7 +13,7 @@
 				},
 
 				{
-					"type":"text",
+					"type":"url",
 					"path":["ac:Organisation.ac:Homepage"]
 				}
 			]

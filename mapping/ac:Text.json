@@ -55,11 +55,20 @@
 			        "path":["ac:Media.ac:Uri"]
 			    },
 
-			    {
-				"name":"License",
-				"type":"text",
-				"path":["ac:Media.ac:hasLicense=*.ac:Homepage"]
-			    }
+                            {
+                                "type":"text",
+                                "path":["ac:Media.ac:hasLicense=*.ac:Title"]
+                            },  
+
+                            {
+                                "type":"text",
+                                "path":["ac:Media.ac:hasLicense=*.ac:Description"]
+                            },
+
+                            {
+                                "type":"url",
+                                "path":["ac:Media.ac:hasLicense=*.ac:Homepage"]
+                            }
 
 			]  
 		},

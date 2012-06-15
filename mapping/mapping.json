@@ -49,10 +49,10 @@
 			"type":"text",
 			"path":[
 				"ac:Media.ac:carriedOutBy=*.ac:Name",
-				"ac:Art_Work.ac:carriedOutBy=ac.Person.ac:Name",
-				"ac:Art_Work.ac:carriedOutBy=ac.Organisation.ac:Title",
-                                "ac:Publication.ac:carriedOutBy=ac.Person.ac:Name",
-                                "ac:Publication.ac:carriedOutBy=ac.Organisation.ac:Title",
+				"ac:Art_Work.ac:carriedOutBy=ac:Person.ac:Name",
+				"ac:Art_Work.ac:carriedOutBy=ac:Organisation.ac:Title",
+                                "ac:Publication.ac:carriedOutBy=ac:Person.ac:Name",
+                                "ac:Publication.ac:carriedOutBy=ac:Organisation.ac:Title",
 				"ac:Case-File.class"				
 			]
 		},
@@ -166,10 +166,10 @@
 		    "name":"License",
 		    "type":"string",
 		    "path":[
-		        "ac:Case-File.ac:references=*.ac:hasLicense=ac:License.id",
-			"ac:Case-File.ac:hasMedia=ac:Media.ac:hasLicense=ac:License.id",
-			"ac:Media.ac:hasLicense=ac:License.id",
-			"ac:Publication.ac:hasLicense=ac:License.id"
+		        "ac:Case-File.ac:references=*.ac:hasLicense=ac:License.ac:Title",
+			"ac:Case-File.ac:hasMedia=ac:Media.ac:hasLicense=ac:License.ac:Title",
+			"ac:Media.ac:hasLicense=ac:License.ac:Title",
+			"ac:Publication.ac:hasLicense=ac:License.ac:Title"
 		    ],
 		    "category":"yes"
 		},
@@ -218,7 +218,7 @@
 			    "ac:Event.ac:Title",
 			    "ac:Media.ac:represents=ac:Event.ac:Title"						    
 			],
-		    "category":"yes",
+		    	"category":"yes",
 			"multilingual":"yes"
 		},
 		
