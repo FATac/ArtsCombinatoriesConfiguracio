@@ -1,0 +1,322 @@
+/*
+	WARNING: THIS IS A LEGAL SCRIPT SPECIFICATION FOR >>>> PRODUCTION USE <<<< VERSION 0.99 28/06/12
+	''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+	
+	PLEASE READ THE FOLLOWING INFORMATION BEFORE ANY FURTHER MODIFICATION
+
+	* Values must be either constant values (string, integer, boolean) or any data-name already introduced in the process
+	* Each expression "exp" must always evaluate to boolean (true/false)
+	* Expression available operators are "=", ">", "<", "!=", "&&", "||"
+	* Expressions should always contain defined variables, otherwise, expression will not be evaluated (goes to next expression)
+	* All variables are stored globally, which means all defined variables can be used on forward block rules and all variable names should be different
+	* While the process is running: when a block is filled up, the rules are used to know which block to continue to
+*/
+
+{
+	"startBlock":"bInici",
+	
+	"blocks":
+	[
+
+         {
+            "name":"bInici",
+            "data":
+            [
+                 {"name":"Triar_el_color_directament", "type":"string", "values":["(fer el proces legal)","verd","groc","taronja","vermell"]}
+            ],
+
+            "rules":
+            [
+                {"exp":"Triar_el_color_directament='verd'", "result":{"color":"green"}},
+                {"exp":"Triar_el_color_directament='groc'", "result":{"color":"yellow"}},
+                {"exp":"Triar_el_color_directament='taronja'", "result":{"color":"orange"}},
+                {"exp":"Triar_el_color_directament='vermell'", "result":{"color":"red"}},
+                {"exp":"true", "result":{"block":"bSeleccionarTipusObjecte"}}
+            ]
+        },
+        
+        {
+        	"name":"bSeleccionarTipusObjecte",
+        	"reference":"Referencia_objecte",
+        	"data":
+        	[
+        		{"name":"Referencia_objecte", "type":"string"},
+        		{"name":"Selecciona_el_tipus_objecte", "type":"string", "values":["Obra","Document"]}
+        	],
+        	
+        	"rules":
+        	[
+        		{"exp":"Selecciona_el_tipus_objecte='Obra'", "result":{"block":"bObra"}},
+        		{"exp":"Selecciona_el_tipus_objecte='Document'", "result":{"block":"bDocument"}}
+        	]	
+        },
+        
+        {
+        	"name":"bDocument",
+        	"reference":"Referencia_objecte",        	
+        	"data":
+        	[
+        		{"name":"Coneixem_autor", "type":"boolean"}
+        	],
+        	
+        	"rules":
+        	[
+        		{"exp":"Coneixem_autor=true", "result":{"block":"bAutorDocument"}},
+        		{"exp":"Coneixem_autor=false", "result":{"color":"red"}}
+        	]
+        },
+        
+        {
+        	"name":"bAutorDocument",
+        	"reference":"Referencia_objecte",        	
+        	"data":
+        	[
+        		{"name":"Tipus_autor_de_document", "type":"string", "values":["Empleat de la FAT", "Contractat per la FAT", "Extern"]},
+        		{"name":"Autoritzacio_per_publicar_document", "type":"boolean"}
+        	],
+        	
+        	"rules":
+        	[
+        		{"exp":"Autoritzacio_per_publicar_document=true || Tipus_autor_de_document='Empleat de la FAT'", "result":{"block":"bContingut"}},
+        		{"exp":"Autoritzacio_per_publicar_document=false", "result":{"color":"red"}}
+        	]
+        },
+        
+        {
+        	"name":"bObra",
+        	"reference":"Referencia_objecte",        	
+        	"data":
+        	[
+        		{"name":"Coneixem_autor", "type":"boolean"}
+        	],
+        	
+        	"rules":
+        	[
+        		{"exp":"Coneixem_autor=true", "result":{"block":"bAutorConegut"}},
+        		{"exp":"Coneixem_autor=false", "result":{"block":"bAutorDesconegut"}}
+        	]
+        },
+        
+        {
+        	"name":"bAutorConegut",
+        	"reference":"Referencia_objecte",        	
+        	"data":
+        	[
+        		{"name":"Llicencia", "type":"string", "values":["Copyright","CreativeCommons by", "CreativeCommons by nc", "CreativeCommons by nc sa", "CreativeCommons by nc nd", "CreativeCommons by sa", "CreativeCommons by nd", "Colorluris", "Llicencia Aire Incondicional", "Llicencia Arte Libre", "Berkeley Database License", "Academic Free License", "MIT License", "University of Illinois", "W3C Software Nnotice and License", "Zope Public License", "Phyton License", "PHP License", "Q Public License", "Common Public License", "Affero License", "altres"]}
+        	],
+        	
+        	"rules":
+        	[
+        						{"exp":"Llicencia='Public Domain'", "result":{"color":"green", "license":"ac:hasLicense=Public_Domain"}},
+                                {"exp":"Llicencia='Copyright'", "result":{"block":"bCopyright", "license":"ac:hasLicense=Copyright"}},
+                                {"exp":"Llicencia='CreativeCommons by'", "result":{"block":"bContingut", "license":"ac:hasLicense=CreativeCommons_by"}},
+                                {"exp":"Llicencia='CreativeCommons by nc'", "result":{"block":"bContingut", "license":"ac:hasLicense=CreativeCommons_by_nc"}},
+                                {"exp":"Llicencia='CreativeCommons by nc sa'", "result":{"block":"bContingut", "license":"ac:hasLicense=CreativeCommons_by_nc_sa"}},
+                                {"exp":"Llicencia='CreativeCommons by nc nd'", "result":{"block":"bContingut", "license":"ac:hasLicense=CreativeCommons_by_nc_nd"}},
+                                {"exp":"Llicencia='CreativeCommons by sa'", "result":{"block":"bContingut", "license":"ac:hasLicense=CreativeCommons_by_sa"}},
+                                {"exp":"Llicencia='CreativeCommons by nd'", "result":{"block":"bContingut", "license":"ac:hasLicense=CreativeCommons_by_nd"}},
+                                {"exp":"Llicencia='Colorluris'", "result":{"block":"bContingut", "license":"ac:hasLicense=Colorluris"}},
+                                {"exp":"Llicencia='Llicencia Aire Incondicional'", "result":{"block":"bContingut", "license":"ac:hasLicense=Llicencia_Aire_Incondicional"}},
+                                {"exp":"Llicencia='Llicencia Arte Libre'", "result":{"block":"bContingut", "license":"ac:hasLicense=Llicencia_Arte_Libre"}},
+                                {"exp":"Llicencia='Berkeley Database License'", "result":{"block":"bContingut", "license":"ac:hasLicense=Berkeley_Database_License"}},
+                                {"exp":"Llicencia='Academic Free License'", "result":{"block":"bContingut", "license":"ac:hasLicense=Academic_Free_License"}},
+                                {"exp":"Llicencia='MIT License'", "result":{"block":"bContingut", "license":"ac:hasLicense=MIT_License"}},
+                                {"exp":"Llicencia='University of Illinois'", "result":{"block":"bContingut", "license":"ac:hasLicense=University_of_Illinois"}},
+                                {"exp":"Llicencia='W3C Software Notice and License'", "result":{"block":"bContingut", "license":"ac:hasLicense=W3C_Software_Notice_and_License"}},
+                                {"exp":"Llicencia='Zope Public License'", "result":{"block":"bContingut", "license":"ac:hasLicense=Zope_Public_License"}},
+                                {"exp":"Llicencia='Phyton License'", "result":{"block":"bContingut", "license":"ac:hasLicense=Phyton_License"}},
+                                {"exp":"Llicencia='PHP License'", "result":{"block":"bContingut", "license":"ac:hasLicense=PHP_License"}},
+                                {"exp":"Llicencia='Q Public License'", "result":{"block":"bContingut", "license":"ac:hasLicense=Q_Public_License"}},
+                                {"exp":"Llicencia='Common Public License'", "result":{"block":"bContingut", "license":"ac:hasLicense=Common_Public_License"}},
+                                {"exp":"Llicencia='Affero License'", "result":{"block":"bContingut", "license":"ac:hasLicense=Affero_License"}},
+                                {"exp":"true", "result":{"block":"bContingut"}}
+        	]
+        },
+        
+        {
+        	"name":"bAutorDesconegut",
+        	"reference":"Referencia_objecte",        	
+        	"data":
+        	[
+        		{"name":"Descripcio_Origen", "type":"string"},
+        		{"name":"Risc", "type":"string", "values":["Inexistent", "Baix","Mig","Alt"]},
+        		{"name":"Comentaris_obra_orfe", "type":"string"}
+        	],
+        	
+        	"rules":
+        	[
+				{"exp":"Risc='Alt'", "result":{"color":"red"}},
+				{"exp":"Risc='Mig'", "result":{"color":"orange"}},
+				{"exp":"true", "result":{"block":"bContingut"}}
+        	]
+        },
+        
+        {
+        	"name":"bCopyright",
+        	"reference":"Referencia_objecte",        	
+        	"data":
+        	[
+        		{"name":"Publicacio", "type":"boolean"},
+        		{"name":"Reproduccio", "type":"boolean"},
+        		{"name":"Transformacio", "type":"boolean"},
+        		{"name":"Distribucio", "type":"boolean"}
+        	],
+        	
+        	"rules":
+        	[
+        		{"exp":"Publicacio=false", "result":{"color":"red"}},
+        		{"exp":"true", "result":{"block":"bContingut"}}
+        	]
+        },
+        
+        {
+        	"name":"bContingut",
+        	"reference":"Referencia_objecte",        	
+        	"data":
+        	[
+        		{"name":"Conte_informacio_personal", "type":"boolean"},
+				{"name":"Conte_informacio_confidencial", "type":"boolean"},
+        		{"name":"Conte_persones", "type":"boolean"},
+				{"name":"Conte_marques", "type":"boolean"}
+        	],
+        	
+        	"rules":
+        	[
+        		{"exp":"Conte_informacio_personal=true || Conte_informacio_confidencial=true", "result":{"color":"red"}},
+        		{"exp":"Conte_persones=true", "result":{"block":"bPersones"}},
+        		{"exp":"Conte_marques=true", "result":{"block":"bMarques"}},
+                {"exp":"Selecciona_el_tipus_objecte='Obra'", "result":{"block":"bContingutAltres1"}},
+                {"exp":"true", "result":{"block":"bFinal"}}
+        	]
+        },
+        
+        {
+        	"name":"bPersones",
+        	"reference":"Referencia_objecte",        	
+        	"data":
+        	[
+        		{"name":"Situacio_persona", "type":"string", "values":["reconeixible", "no reconeixible", "persona publica"]}
+        	],
+        	
+        	"rules":
+        	[
+        		{"exp":"Situacio_persona='reconeixible' || Situacio_persona='persona publica'", "result":{"block":"bPersonaReconeixible"}},
+        		{"exp":"Situacio_persona='no reconeixible' && Conte_marques=false && Selecciona_el_tipus_objecte='Obra'", "result":{"block":"bContingutAltres1"}},
+        		{"exp":"Conte_marques=true", "result":{"block":"bMarques"}},
+        		{"exp":"true", "result":{"block":"bFinal"}}
+        	]
+        },
+        
+        {
+        	"name":"bPersonaReconeixible",
+        	"reference":"Referencia_objecte",        	
+        	"data":
+        	[
+        		{"name":"Impacta_honor_o_intimitat", "type":"boolean"},
+        		{"name":"Persona_en_lloc_public", "type":"boolean"},
+        		{"name":"La_persona_ha_autoritzat_la_publicacio", "type":"boolean"},
+        		{"name":"Referencia_autoritzacio_persona", "type":"string"}
+        	],
+        	
+        	"rules":
+        	[
+        		{"exp":"Impacta_honor_o_intimitat=true", "result":{"color":"red"}},
+        		{"exp":"Conte_marques=false && Selecciona_el_tipus_objecte='Obra'", "result":{"block":"bContingutAltres1"}},
+        		{"exp":"Conte_marques=true", "result":{"block":"bMarques"}},
+        		{"exp":"true", "result":{"block":"bFinal"}}
+        	]
+        },
+
+        {
+               "name":"bMarques",
+               "reference":"Referencia_objecte",
+               "data":
+               [
+                       {"name":"Nom_de_la_marca", "type":"string"},
+                       {"name":"Propietari_de_la_marca", "type":"string"},
+                       {"name":"Autoritzacio_de_la_marca", "type":"boolean"},
+                       {"name":"Referencia_autoritzacio_marca", "type":"string"},
+                       {"name":"Risc_de_publicacio_de_la_marca", "type":"string","values":["Inexistent","Baix","Mig","Alt"]}
+               ],
+
+               "rules":
+               [
+                       {"exp":"Risc_de_publicacio_de_la_marca='Alt' && Autoritzacio_de_la_marca=false", "result":{"color":"red"}},
+                       {"exp":"Selecciona_el_tipus_objecte='Obra'", "result":{"block":"bContingutAltres1"}},
+                       {"exp":"true", "result":{"block":"bFinal"}}
+               ]
+       },
+
+        {
+               "name":"bContingutAltres1",
+               "reference":"Referencia_objecte",
+               "data":
+               [
+                       {"name":"Conte_altres_obres_o_documents", "type":"boolean"},
+               ],
+
+               "rules":
+               [
+                       {"exp":"Conte_altres_obres_o_documents=true", "result":{"block":"bContingutAltres2"}},
+                       {"exp":"true", "result":{"block":"bContingutAltres3"}}
+
+               ]
+        },
+
+        {
+        	"name":"bContingutAltres2",
+        	"reference":"Referencia_objecte",        	
+        	"data":
+        	[
+        		{"name":"Te_permis_per_publicar_les_obres_contingudes", "type":"boolean"},
+        	],
+        	
+        	"rules":
+        	[
+        		{"exp":"Te_permis_per_publicar_les_obres_contingudes=false", "result":{"block":"bContingutAltres3"}},
+        		{"exp":"true", "result":{"block":"bFinal"}}
+        		
+        	]
+        },
+        
+        {
+        	"name":"bContingutAltres3",
+        	"reference":"Referencia_objecte",        	
+        	"data":
+        	[
+        		{"name":"Risc_obra_continguda", "type":"string", "values":["Inexistent","Baix","Mig","Alt"]},
+        	],
+        	
+        	"rules":
+        	[
+        		{"exp":"true", "result":{"block":"bFinal"}}
+        	]        
+        },
+       
+        {
+        	"name":"bFinal",
+        	"data":
+        	[
+				{"name":"Premer submit per acabar", "type":"label"}
+        	],
+        	
+        	"rules":
+        	[
+        		{"exp":"Conte_persones=true && Situacio_persona='reconeixible' && Persona_en_lloc_public=false && La_persona_ha_autoritzat_la_publicacio=false && Conte_altres_obres_o_documents=true && Te_permis_per_publicar_les_obres_contingudes=false && Risc_obra_continguda!='Baix' ", "result":{"color":"red"}},
+        		{"exp":"Conte_persones=true && Situacio_persona='reconeixible' && Persona_en_lloc_public=false && La_persona_ha_autoritzat_la_publicacio=false && Conte_marques=true && Autoritzacio_de_la_marca=false && Risc_de_publicacio_de_la_marca='Mig' ", "result":{"color":"red"}},
+        		{"exp":"Conte_altres_obres_o_documents=true && Te_permis_per_publicar_les_obres_contingudes=false && Risc_obra_continguda='Alt' && Conte_marques=true && Autoritzacio_de_la_marca=false && Risc_de_publicacio_de_la_marca='Mig' ", "result":{"color":"red"}},
+        		        		
+        		{"exp":"Conte_persones=true && Situacio_persona='reconeixible' && Persona_en_lloc_public=false && La_persona_ha_autoritzat_la_publicacio=false ", "result":{"color":"orange"}},
+                {"exp":"Conte_altres_obres_o_documents=true && Te_permis_per_publicar_les_obres_contingudes=false && Risc_obra_continguda='Alt'", "result":{"color":"orange"}},
+        		{"exp":"Conte_altres_obres_o_documents=true && Te_permis_per_publicar_les_obres_contingudes=false && Risc_obra_continguda='Mig' && Conte_marques=true && Autoritzacio_de_la_marca=false && Risc_de_publicacio_de_la_marca='Mig' ", "result":{"color":"orange"}},
+        		
+        		{"exp":"Conte_altres_obres_o_documents=true && Te_permis_per_publicar_les_obres_contingudes=false && Risc_obra_continguda='Mig'", "result":{"color":"yellow"}},
+        		{"exp":"Autoritzacio_de_la_marca=false && Risc_de_publicacio_de_la_marca='Mig'", "result":{"color":"yellow"}},
+        		{"exp":"Conte_persones=true && Situacio_persona='reconeixible' && Persona_en_lloc_public=false && La_persona_ha_autoritzat_la_publicacio=false", "result":{"color":"yellow"}},
+				
+				{"exp":"true", "result":{"color":"green"}}
+        	]        
+        }
+        
+	]
+}
