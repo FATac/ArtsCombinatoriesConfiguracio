@@ -102,7 +102,7 @@
         	"reference":"Referencia_objecte",        	
         	"data":
         	[
-        		{"name":"Llicencia", "type":"string", "values":["Copyright","CreativeCommons by", "CreativeCommons by nc", "CreativeCommons by nc sa", "CreativeCommons by nc nd", "CreativeCommons by sa", "CreativeCommons by nd", "Colorluris", "Llicencia Aire Incondicional", "Llicencia Arte Libre", "Berkeley Database License", "Academic Free License", "MIT License", "University of Illinois", "W3C Software Nnotice and License", "Zope Public License", "Phyton License", "PHP License", "Q Public License", "Common Public License", "Affero License", "altres"]}
+        		{"name":"Llicencia", "type":"string", "values":["Public Domain","Copyright","CreativeCommons by", "CreativeCommons by nc", "CreativeCommons by nc sa", "CreativeCommons by nc nd", "CreativeCommons by sa", "CreativeCommons by nd", "Colorluris", "Llicencia Aire Incondicional", "Llicencia Arte Libre", "Berkeley Database License", "Academic Free License", "MIT License", "University of Illinois", "W3C Software Nnotice and License", "Zope Public License", "Phyton License", "PHP License", "Q Public License", "Common Public License", "Affero License", "altres"]}
         	],
         	
         	"rules":
