@@ -1,5 +1,5 @@
 /*
-	WARNING: THIS IS A LEGAL SCRIPT SPECIFICATION FOR >>>> PRODUCTION USE <<<< VERSION 0.05 18/07/11
+	WARNING: THIS IS A LEGAL SCRIPT SPECIFICATION FOR >>>> PRODUCTION USE <<<< VERSION 0.99 28/06/12
 	''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 	
 	PLEASE READ THE FOLLOWING INFORMATION BEFORE ANY FURTHER MODIFICATION
@@ -107,6 +107,7 @@
         	
         	"rules":
         	[
+        						{"exp":"Llicencia='Public Domain'", "result":{"color":"green", "license":"ac:hasLicense=Public_Domain"}},
                                 {"exp":"Llicencia='Copyright'", "result":{"block":"bCopyright", "license":"ac:hasLicense=Copyright"}},
                                 {"exp":"Llicencia='CreativeCommons by'", "result":{"block":"bContingut", "license":"ac:hasLicense=CreativeCommons_by"}},
                                 {"exp":"Llicencia='CreativeCommons by nc'", "result":{"block":"bContingut", "license":"ac:hasLicense=CreativeCommons_by_nc"}},
@@ -184,7 +185,8 @@
         		{"exp":"Conte_informacio_personal=true || Conte_informacio_confidencial=true", "result":{"color":"red"}},
         		{"exp":"Conte_persones=true", "result":{"block":"bPersones"}},
         		{"exp":"Conte_marques=true", "result":{"block":"bMarques"}},
-                {"exp":"true", "result":{"block":"bContingutAltres1"}}
+                {"exp":"Selecciona_el_tipus_objecte='Obra'", "result":{"block":"bContingutAltres1"}},
+                {"exp":"true", "result":{"block":"bFinal"}}
         	]
         },
         
@@ -193,14 +195,15 @@
         	"reference":"Referencia_objecte",        	
         	"data":
         	[
-        		{"name":"Situacio_persona", "type":"string", "values":["reconeixible", "no reconeixible", "persona pública"]}
+        		{"name":"Situacio_persona", "type":"string", "values":["reconeixible", "no reconeixible", "persona publica"]}
         	],
         	
         	"rules":
         	[
-        		{"exp":"Situacio_persona='reconeixible' || Situacio_persona='persona pública'", "result":{"block":"bPersonaReconeixible"}},
-        		{"exp":"Situacio_persona='no reconeixible' && Conte_marques=false", "result":{"block":"bContingutAltres1"}},
-        		{"exp":"Conte_marques=true", "result":{"block":"bMarques"}}
+        		{"exp":"Situacio_persona='reconeixible' || Situacio_persona='persona publica'", "result":{"block":"bPersonaReconeixible"}},
+        		{"exp":"Situacio_persona='no reconeixible' && Conte_marques=false && Selecciona_el_tipus_objecte='Obra'", "result":{"block":"bContingutAltres1"}},
+        		{"exp":"Conte_marques=true", "result":{"block":"bMarques"}},
+        		{"exp":"true", "result":{"block":"bFinal"}}
         	]
         },
         
@@ -218,51 +221,46 @@
         	"rules":
         	[
         		{"exp":"Impacta_honor_o_intimitat=true", "result":{"color":"red"}},
-                {"exp":"Situacio_persona='persona pública' && Conte_marques=false", "result":{"block":"bContingutAltres1"}},
-        		{"exp":"La_persona_ha_autoritzat_la_publicacio=false && Persona_en_lloc_public=false && Conte_marques=false", "result":{"block":"bContingutAltres1"}},
-        		{"exp":"La_persona_ha_autoritzat_la_publicacio=true && Persona_en_lloc_public=false && Conte_marques=false", "result":{"block":"bContingutAltres1"}},
-        		{"exp":"La_persona_ha_autoritzat_la_publicacio=false && Persona_en_lloc_public=true && Conte_marques=false", "result":{"block":"bContingutAltres1"}},
-        		{"exp":"La_persona_ha_autoritzat_la_publicacio=true && Persona_en_lloc_public=true && Conte_marques=false", "result":{"block":"bContingutAltres1"}},
-        		{"exp":"Conte_marques=true", "result":{"block":"bMarques"}}
-        	]
-        },
-        
-        {
-        	"name":"bMarques",
-        	"reference":"Referencia_objecte",        	
-        	"data":
-        	[
-        		{"name":"Nom_de_la_marca", "type":"string"},
-        		{"name":"Propietari_de_la_marca", "type":"string"},
-        		{"name":"Autoritzacio_de_la_marca", "type":"boolean"},
-        		{"name":"Referencia_autoritzacio_marca", "type":"string"},
-        		{"name":"Risc_de_publicacio_de_la_marca", "type":"string", "values":["Inexistent","Baix","Mig","Alt"]}
-        	],
-        	
-        	"rules":
-        	[
-        		{"exp":"Risc_de_publicacio_de_la_marca='Alt' && Autoritzacio_de_la_marca=false", "result":{"color":"red"}},
-        		{"exp":"Risc_de_publicacio_de_la_marca='Inexistent' || Autoritzacio_de_la_marca=true", "result":{"block":"bContingutAltres1"}},
-        		{"exp":"Risc_de_publicacio_de_la_marca='Baix' && Autoritzacio_de_la_marca=false", "result":{"color":"orange"}},
-        		{"exp":"Risc_de_publicacio_de_la_marca='Mig' && Autoritzacio_de_la_marca=false", "result":{"color":"orange"}}
+        		{"exp":"Conte_marques=false && Selecciona_el_tipus_objecte='Obra'", "result":{"block":"bContingutAltres1"}},
+        		{"exp":"Conte_marques=true", "result":{"block":"bMarques"}},
+        		{"exp":"true", "result":{"block":"bFinal"}}
         	]
         },
 
-        
         {
-        	"name":"bContingutAltres1",
-        	"reference":"Referencia_objecte",        	
-        	"data":
-        	[
-        		{"name":"Conte_altres_obres_o_documents", "type":"boolean"},
-        	],
-        	
-        	"rules":
-        	[
-        		{"exp":"Conte_altres_obres_o_documents=true", "result":{"block":"bContingutAltres2"}},
-        		{"exp":"true", "result":{"block":"bContingutAltres1"}}
-        		
-        	]
+               "name":"bMarques",
+               "reference":"Referencia_objecte",
+               "data":
+               [
+                       {"name":"Nom_de_la_marca", "type":"string"},
+                       {"name":"Propietari_de_la_marca", "type":"string"},
+                       {"name":"Autoritzacio_de_la_marca", "type":"boolean"},
+                       {"name":"Referencia_autoritzacio_marca", "type":"string"},
+                       {"name":"Risc_de_publicacio_de_la_marca", "type":"string","values":["Inexistent","Baix","Mig","Alt"]}
+               ],
+
+               "rules":
+               [
+                       {"exp":"Risc_de_publicacio_de_la_marca='Alt' && Autoritzacio_de_la_marca=false", "result":{"color":"red"}},
+                       {"exp":"Selecciona_el_tipus_objecte='Obra'", "result":{"block":"bContingutAltres1"}},
+                       {"exp":"true", "result":{"block":"bFinal"}}
+               ]
+       },
+
+        {
+               "name":"bContingutAltres1",
+               "reference":"Referencia_objecte",
+               "data":
+               [
+                       {"name":"Conte_altres_obres_o_documents", "type":"boolean"},
+               ],
+
+               "rules":
+               [
+                       {"exp":"Conte_altres_obres_o_documents=true", "result":{"block":"bContingutAltres2"}},
+                       {"exp":"true", "result":{"block":"bContingutAltres3"}}
+
+               ]
         },
 
         {
@@ -276,7 +274,7 @@
         	"rules":
         	[
         		{"exp":"Te_permis_per_publicar_les_obres_contingudes=false", "result":{"block":"bContingutAltres3"}},
-        		{"exp":"true", "result":{"block":"bContingutAltres3"}}
+        		{"exp":"true", "result":{"block":"bFinal"}}
         		
         	]
         },
@@ -307,11 +305,10 @@
         		{"exp":"Conte_persones=true && Situacio_persona='reconeixible' && Persona_en_lloc_public=false && La_persona_ha_autoritzat_la_publicacio=false && Conte_altres_obres_o_documents=true && Te_permis_per_publicar_les_obres_contingudes=false && Risc_obra_continguda!='Baix' ", "result":{"color":"red"}},
         		{"exp":"Conte_persones=true && Situacio_persona='reconeixible' && Persona_en_lloc_public=false && La_persona_ha_autoritzat_la_publicacio=false && Conte_marques=true && Autoritzacio_de_la_marca=false && Risc_de_publicacio_de_la_marca='Mig' ", "result":{"color":"red"}},
         		{"exp":"Conte_altres_obres_o_documents=true && Te_permis_per_publicar_les_obres_contingudes=false && Risc_obra_continguda='Alt' && Conte_marques=true && Autoritzacio_de_la_marca=false && Risc_de_publicacio_de_la_marca='Mig' ", "result":{"color":"red"}},
-        		
-        		{"exp":"Conte_altres_obres_o_documents=true && Te_permis_per_publicar_les_obres_contingudes=false && Risc_obra_continguda='Alt'", "result":{"color":"orange"}},
+        		        		
+        		{"exp":"Conte_persones=true && Situacio_persona='reconeixible' && Persona_en_lloc_public=false && La_persona_ha_autoritzat_la_publicacio=false ", "result":{"color":"orange"}},
+                {"exp":"Conte_altres_obres_o_documents=true && Te_permis_per_publicar_les_obres_contingudes=false && Risc_obra_continguda='Alt'", "result":{"color":"orange"}},
         		{"exp":"Conte_altres_obres_o_documents=true && Te_permis_per_publicar_les_obres_contingudes=false && Risc_obra_continguda='Mig' && Conte_marques=true && Autoritzacio_de_la_marca=false && Risc_de_publicacio_de_la_marca='Mig' ", "result":{"color":"orange"}},
-        		{"exp":"Conte_altres_obres_o_documents=true && Te_permis_per_publicar_les_obres_contingudes=false && Risc_obra_continguda='Mig' && Conte_persones=true && Situacio_persona='reconeixible' && Persona_en_lloc_public=false && La_persona_ha_autoritzat_la_publicacio=false ", "result":{"color":"orange"}},
-        		{"exp":"Conte_marques=true && Autoritzacio_de_la_marca=false && Risc_de_publicacio_de_la_marca='Mig' && Conte_persones=true && Situacio_persona='reconeixible' && Persona_en_lloc_public=false && La_persona_ha_autoritzat_la_publicacio=false ", "result":{"color":"orange"}},
         		
         		{"exp":"Conte_altres_obres_o_documents=true && Te_permis_per_publicar_les_obres_contingudes=false && Risc_obra_continguda='Mig'", "result":{"color":"yellow"}},
         		{"exp":"Autoritzacio_de_la_marca=false && Risc_de_publicacio_de_la_marca='Mig'", "result":{"color":"yellow"}},
