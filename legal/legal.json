@@ -107,7 +107,7 @@
         	
         	"rules":
         	[
-                                {"exp":"Llicencia='Copyright'", "result":{"block":"bCopyright"}},
+                                {"exp":"Llicencia='Copyright'", "result":{"block":"bCopyright", "license":"ac:hasLicense=Copyright"}},
                                 {"exp":"Llicencia='CreativeCommons by'", "result":{"block":"bContingut", "license":"ac:hasLicense=CreativeCommons_by"}},
                                 {"exp":"Llicencia='CreativeCommons by nc'", "result":{"block":"bContingut", "license":"ac:hasLicense=CreativeCommons_by_nc"}},
                                 {"exp":"Llicencia='CreativeCommons by nc sa'", "result":{"block":"bContingut", "license":"ac:hasLicense=CreativeCommons_by_nc_sa"}},
