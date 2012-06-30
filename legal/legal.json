@@ -258,7 +258,7 @@
                "rules":
                [
                        {"exp":"Conte_altres_obres_o_documents=true", "result":{"block":"bContingutAltres2"}},
-                       {"exp":"true", "result":{"block":"bContingutAltres3"}}
+                       {"exp":"true", "result":{"block":"bFinal"}}
 
                ]
         },
