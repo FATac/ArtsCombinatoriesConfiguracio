@@ -103,13 +103,6 @@
 
                                 {
                                         "type":"text",
-                                        "name":"Mides",
-                                        "path":["ac:Art_Work.ac:measurement"]
-                                },
-
-                                {
-                                        "type":"text",
-                                        "name":"Mides",
                                         "path":["ac:Art_Work.ac:CreditLine"]
                                 },
 

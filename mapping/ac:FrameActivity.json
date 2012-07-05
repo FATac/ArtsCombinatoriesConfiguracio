@@ -36,9 +36,20 @@
 				},
 				
 				{
+					"type":"text",
+					"value":["  "]
+				},
+				
+				{
 					"name":"Creator",
 					"type":"linkedObjects",
 					"path":["ac:FrameActivity.ac:carriedOutBy=*.ac:Name"]
+				},
+
+				{
+					"name":"Participants",
+					"type":"linkedObjects",
+					"path":["ac:FrameActivity.ac:hasparticipedIn=*.ac:Name"]
 				},				
 				
 				{

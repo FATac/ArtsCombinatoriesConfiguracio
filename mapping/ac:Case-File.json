@@ -7,10 +7,15 @@
 			"name":"header",
 			"data":[
 		
-		    	{
+			    	{
 					"type":"text",
 					"path":["ac:Case-File.ac:references=*.ac:Title"]
-				}
+				},
+
+                                {
+                                        "type":"counter",
+                                        "path":["ac:Case-File.ac:hasMedia=*.class"]
+                                }
 			]
 		},
 		
@@ -18,11 +23,6 @@
 			"name":"body",
 			"data":[
 			    
-				{
-					"type":"counter",
-					"path":["ac:Case-File.ac:hasMedia=*.class"]			
-				},
-
 				{
 					"type":"text",
 					"value":[" "]

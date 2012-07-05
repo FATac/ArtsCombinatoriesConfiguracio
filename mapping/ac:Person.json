@@ -34,25 +34,441 @@
 				        "type":"text",
 				        "path":["ac:Person.ac:Bio"]
 			    	},
+
+				{
+					"type":"text",
+					"value":["  "]
+				},
+
+                            {
+                                "name":"Actor",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Actor.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Architect",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Architect.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Archivist",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Archivist.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Artist",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Artist.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Author",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Author.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Cartoonist",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Cartoonist.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Cataloguer",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Cataloguer.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Chair",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Chair.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Choreographer",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Choreographer.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Collaborator",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Collaborator.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Composer",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Composer.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Consultant",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Consultant.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Critic",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Critic.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Curator",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Curator.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Dancer",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Dancer.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Designer",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Designer.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Developer",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Developer.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Editor",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Editor.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Film-maker",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Film-maker.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Historian",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Historian.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Illustrator",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Illustrator.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Journalist",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Journalist.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Lawyer",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Lawyer.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Lecturer",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Lecturer.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Librarian",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Librarian.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Member",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Member.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Musician",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Musician.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Participant",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Participant.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Photographer",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Photographer.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Poet",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Poet.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Producer",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Producer.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Project_Manager",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Project_Manager.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Publisher",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Publisher.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Restorer",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Restorer.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Singer",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Singer.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Speaker",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Speaker.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+
+                            {
+                                "name":"Sponsor",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Sponsor.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+                            {
+                                "name":"Translator",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Translator.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+                            {
+                                "name":"Worker",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Worker.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+                            {
+                                "name":"Workshop_tutor",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Workshop_tutor.ac:appliesOn=*.ac:Title"
+                                ]
+                            },
+
+
+                            {
+                                "name":"Writer",
+                                "type":"linkedObjects",
+                                "path":[
+                                        "ac:Person.ac:performsRole=ac:Writer.ac:appliesOn=*.ac:Title"
+                                ]
+                            }
 			    
-			    {
-			        "name":"Participation",
-			        "type":"linkedObjects",
-			        "path":[
-			         	"ac:Person.ac:performsRole=*.ac:appliesOn=*.ac:Title"
-			        ]
-			    }
 			]  
 		},
 
 		{
 			"name":"content",
 			"data":[
+
 				{
 					"type":"objects",
 					"name":"Publications",
 					"path":["ac:Person.ac:hasPublications"]
-				}
+				},
+
+				{
+					"type":"objects",
+					"name":"RelatedDocuments",
+					"path":["ac:Person.ac:hasCarriedOut"]
+				},
+
+                                {
+                                        "type":"objects",
+                                        "name":"RelatedCaseFiles",
+                                        "path":["ac:Person.ac:hasCarriedOut=*.ac:isReferencedBy", "ac:Person.ac:participatedInEvent=*.ac:isReferencedBy", "ac:Person.ac:hasCarriedOut=*.ac:containedBy"]
+                                }
+
 			]
 		}
 	]
