@@ -59,7 +59,7 @@
 				},
 
                                 {
-                                        "name":"CaseFile",
+                                        "name":"Expedient",
                                         "type":"linkedObjects",
                                         "path":["ac:FrameActivity.ac:isReferencedBy=*.ac:Title"]
                                 }  

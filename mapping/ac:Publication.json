@@ -19,6 +19,53 @@
                         "data":[
 
                             {
+                                "name":"Authors",
+                                "type":"linkedObjects",
+                                "path":["ac:Publication.ac:applicationOf=ac:Writer.ac:performedBy=ac:Agent.ac:Name"]
+                            },
+
+                            {
+                                "name":"Publisher",
+                                "type":"linkedObjects",
+                                "path":["ac:Publication.ac:applicationOf=ac:Publisher.ac:performedBy=ac:Agent.ac:Name"]
+                            },
+
+                            {
+                                "name":"Designers",
+                                "type":"linkedObjects",
+                                "path":["ac:Publication.ac:applicationOf=ac:Designer.ac:performedBy=ac:Agent.ac:Name"]
+                            },
+
+                            {
+                                "name":"Translators",
+                                "type":"linkedObjects",
+                                "path":["ac:Publication.ac:applicationOf=ac:Translator.ac:performedBy=ac:Agent.ac:Name"]
+                            },
+
+			    {
+                                "type":"text",
+                                "path":["ac:Publication.ac:Description"]
+                            },
+
+                            {
+                                "name":"ISBN",
+                                "type":"text",
+                                "path":["ac:Publication.ac:ISBN"]
+                            },
+
+                            {
+                                "name":"NumPages",
+                                "type":"text",
+                                "path":["ac:Publication.ac:NumberofPages"]
+                            },
+
+                            {
+                                "name":"Color",
+                                "type":"text",
+                                "path":["ac:Publication.ac:ColorIllustrations"]
+                            },
+
+                            {
                                 "name":"Year",
                                 "type":"text",
                                 "path":["ac:Publication.ac:Date"]
@@ -42,30 +89,6 @@
                             },
 
                             {
-                                "name":"Authors",
-                                "type":"linkedObjects",
-                                "path":["ac:Publication.ac:applicationOf=ac:Writer.ac:performedBy=ac:Agent.ac:Name"]
-                            },
-
-                            {
-                                "name":"Designers",
-                                "type":"linkedObjects",
-                                "path":["ac:Publication.ac:applicationOf=ac:Designer.ac:performedBy=ac:Agent.ac:Name"]
-                            },
-
-                            {
-                                "name":"Translators",
-                                "type":"linkedObjects",
-                                "path":["ac:Publication.ac:applicationOf=ac:Translator.ac:performedBy=ac:Agent.ac:Name"]
-                            },
-
-                            {
-                                "name":"Publisher",
-                                "type":"linkedObjects",
-                                "path":["ac:Publication.ac:applicationOf=ac:Publisher.ac:performedBy=ac:Agent.ac:Name"]
-                            },
-
-                            {
                                 "name":"Place",
                                 "type":"text",
                                 "path":["ac:Publication.ac:tookPlaceAt=ac:Location.ac:Name"]
@@ -75,24 +98,6 @@
                                 "name":"Language",
                                 "type":"text",
                                 "path":["ac:Publication.ac:hasLanguage=ac:Language.ac:Label"]
-                            },
-
-                            {
-                                "name":"ISBN",
-                                "type":"text",
-                                "path":["ac:Publication.ac:ISBN"]
-                            },
-
-                            {
-                                "name":"NumPages",
-                                "type":"text",
-                                "path":["ac:Publication.ac:NumberofPages"]
-                            },
-
-                            {
-                                "name":"Color",
-                                "type":"text",
-                                "path":["ac:Publication.ac:ColorIllustrations"]
                             },
 
                             {

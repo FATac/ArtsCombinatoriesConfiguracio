@@ -39,7 +39,7 @@
 		        {
 		            "name":"Representation",
 		            "type":"objects",
-			        "path":["ac:SpecialObject.ac:representedBy"]
+			        "path":["ac:SpecialObject.ac:representedBy","ac:SpecialObject.ac:hasRepresentation"]
 		        }
 		    ]
 		}

@@ -35,9 +35,7 @@
 			"type":"date.year",
 			"path":[
 				"ac:Event.ac:StartDate",
-				"ac:Event.ac:EndDate",
 				"ac:Case-File.ac:StartDate",
-				"ac:Case-File.ac:EndDate",
 				"ac:Media.ac:created",
 				"ac:Publication.ac:Date",
 				"ac:Art_Work.ac:Date"				
@@ -313,7 +311,7 @@
 		
 		{
 		    "name":"ChronologicalOrder",
-		    "type":"date.year",
+		    "type":"date",
 		    "path":[
 		        "ac:Case-File.ac:references=*.ac:StartDate",
 		        "ac:Event.ac:StartDate",

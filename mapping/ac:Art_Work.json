@@ -97,7 +97,7 @@
 		        {
 		            "name":"Representation",
 		            "type":"objects",
-			    "path":["ac:Art_Work.ac:representedBy"]
+			    "path":["ac:Art_Work.ac:representedBy","ac:Art_Work.ac:hasRepresentation"]
 		        }
 		    ]
 		}

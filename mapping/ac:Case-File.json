@@ -9,7 +9,7 @@
 		
 			    	{
 					"type":"text",
-					"path":["ac:Case-File.ac:references=*.ac:Title"]
+					"path":["ac:Case-File.ac:Title"]
 				},
 
                                 {
@@ -33,9 +33,19 @@
 					"name":"Year",
 					"path":["ac:Case-File.ac:StartDate", "ac:Case-File.ac:EndDate"]
 				},
-			    
+
+                                {
+                                        "type":"text",
+                                        "path":["ac:Case-File.ac:Case-fileDescriptionLevel"]
+                                },
+
+                                {
+                                        "name":"RegisterNumber",
+                                        "type":"text",
+                                        "path":["ac:Case-File.ac:RegisterNumber"]
+                                },
+
 				{
-				        "name":"Description",
 				        "type":"text",
 				        "path":["ac:Case-File.ac:Description"]
 				},
@@ -46,28 +56,23 @@
                                 },
 
 				{
+                                        "name":"Holding",
+                                        "type":"text",
+                                        "path":["ac:Case-File.ac:Holding"]
+                                },
+
+				{
 					"name":"Volum",
 					"type":"text",
 					"path":["ac:Case-File.ac:Volum"]
 				},
 
 				{
-					"name":"RegisterNumber",
-					"type":"text",
-					"path":["ac:Case-File.ac:RegisterNumber"]
-				},
-
-				{
 					"name":"Manuscript",
 					"type":"text",
 					"path":["ac:Case-File.ac:Manuscript"]
-				},
-
-				{
-					"name":"Holding",
-					"type":"text",
-					"path":["ac:Case-File.ac:Holding"]
 				}
+
 
 			]
 		},
