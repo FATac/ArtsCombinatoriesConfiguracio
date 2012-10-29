@@ -1,60 +1,60 @@
 {
-	"className":"ac:Media",
-	
-	"sections":
-	[
-		{
-			"name":"header",
-			"data":[
-		
-		    	{
-					"type":"text",
-					"path":["ac:Media.ac:Title"]
-				}
-			]
-		},
-		
-		{
-			"name":"body",
-			"data":[
-			    
-			    {
-			        "name":"Description",
-			        "type":"text",
-			        "path":["ac:Media.ac:Description"]
-			    },
-			    
-			 	{
-			        "name":"Format",
-			        "type":"text",
-			        "path":["ac:Media.ac:format"]
-			    },
-			    
-			    {
-			        "name":"OriginalSource",
-			        "type":"text",
-			        "path":["ac:Media.ac:OriginalSource"]
-			    },
+    "className":"ac:Media",
 
-			    {
-			        "name":"Authors",
-			        "type":"linkedObjects",
-			        "path":[
-			        	"ac:Media.ac:containedBy=ac:Case-File.ac:references=ac:Event.ac:applicationOf=*.ac:performedBy=*.ac:Name",
-			        	"ac:Media.ac:containedBy=ac:Case-File.ac:references=ac:Event.ac:applicationOf=*.ac:performedBy=*.ac:Title"
-			        ]
-			    }
-			]  
-		},
-		
-		{
-			"name":"content",
-			"data":[
-			 	{
-			        "type":"media",
-			        "path":["ac:Media.ac:Uri"]
-			    }
-			]  
-		}
-	]
+    "sections":
+    [
+        {
+            "name":"header",
+            "data":[
+
+                {
+                    "type":"text",
+                    "path":["ac:Media.ac:Title"]
+                }
+            ]
+        },
+
+        {
+            "name":"body",
+            "data":[
+
+                {
+                    "name":"Description",
+                    "type":"text",
+                    "path":["ac:Media.ac:Description"]
+                },
+
+                {
+                    "name":"Format",
+                    "type":"text",
+                    "path":["ac:Media.ac:format"]
+                },
+
+                {
+                    "name":"OriginalSource",
+                    "type":"text",
+                    "path":["ac:Media.ac:OriginalSource"]
+                },
+
+                {
+                    "name":"Authors",
+                    "type":"linkedObjects",
+                    "path":[
+                        "ac:Media.ac:containedBy=ac:Case-File.ac:references=ac:Event.ac:applicationOf=*.ac:performedBy=*.ac:Name",
+                        "ac:Media.ac:containedBy=ac:Case-File.ac:references=ac:Event.ac:applicationOf=*.ac:performedBy=*.ac:Title"
+                    ]
+                }
+            ]
+        },
+
+        {
+            "name":"content",
+            "data":[
+                {
+                    "type":"media",
+                    "path":["ac:Media.ac:Uri"]
+                }
+            ]
+        }
+    ]
 }

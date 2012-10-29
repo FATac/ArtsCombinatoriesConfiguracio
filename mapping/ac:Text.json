@@ -1,188 +1,241 @@
 {
-	"className":"ac:Media",
-	
-	"sections":
-	[
-		{
-			"name":"header",
-			"data":[
-		
-			    	{
-					"type":"text",
-					"path":["ac:Media.ac:Title"]
-				}
-			]
-		},
-		
-		{
-			"name":"body",
-			"data":[
+    "className":"ac:Media",
 
-			    {
-				"name":"Writer",
-				"type":"text",
-				"path":["ac:Media.ac:carriedOutBy=ac:Agent.ac:Name"]
-			    },
+    "sections":
+    [
+        {
+            "name":"header",
+            "data":[
 
-			    {
-				"name":"Date",
-				"type":"text",
-				"path":["ac:Media.ac:created"]
-			    },
+                {
+                    "type":"text",
+                    "path":["ac:Media.ac:Title"]
+                }
+            ]
+        },
 
-			    {
-			        "type":"text",
-			        "path":["ac:Media.ac:Description"]
-			    },
+        {
+            "name":"body",
+            "data":[
 
-			    {
-				"name":"PagesNumber",
-				"type":"text",
-				"path":["ac:Media.ac:NumberofPages"]
-			    }		
+                {
+                    "name":"Writer",
+                    "type":"text",
+                    "path":["ac:Media.ac:carriedOutBy=ac:Agent.ac:Name"]
+                },
 
-			    
-			]  
-		},
-		
-		{
-			"name":"content",
-			"data":[
+                {
+                    "name":"Date",
+                    "type":"text",
+                    "path":["ac:Media.ac:created"]
+                },
 
-			    {
-			        "type":"media",
-			        "path":["ac:Media.ac:Uri"]
-			    },
+                {
+                    "name":"Place",
+                    "type":"text",
+                    "path":["ac:Media.ac:tookPlaceAt=ac:Location.ac:Name"]
+                },
 
-                            {
-                                "type":"text",
-                                "path":["ac:Media.ac:hasLicense=*.ac:Title"]
-                            },  
+                {
+                    "type":"text",
+                    "path":["ac:Media.ac:Description"]
+                },
 
-                            {
-                                "type":"text",
-                                "path":["ac:Media.ac:hasLicense=*.ac:Description"]
-                            },
+                {
+                    "name":"TypeDocumentary",
+                    "type":"text",
+                    "path":["ac:Media.ac:isTypeDocumentary=*.ac:Name"]
+                },
 
-                            {
-                                "type":"url",
-                                "path":["ac:Media.ac:hasLicense=*.ac:Homepage"]
-                            }
+                {
+                    "name":"Language",
+                    "type":"text",
+                    "path":["ac:Media.ac:hasLanguage=ac:Language.ac:Label"]
+                },
 
-			]  
-		},
+                {
+                    "name":"Translation",
+                    "type":"text",
+                    "path":["ac:Media.ac:hasTranslation=ac:Language.ac:Label"]
+                },
 
-		{
-			"name":"footer",
-			"data":[
-					
-                            {
-                                "name":"Format",
-                                "type":"text",
-                                "path":["ac:Media.ac:format"]
-                            },
+                {
+                    "name":"PagesNumber",
+                    "type":"text",
+                    "path":["ac:Media.ac:NumberofPages"]
+                },
 
-			    {
-				"name":"Place",
-				"type":"text",
-				"path":["ac:Media.ac:tookPlaceAt=ac:Location.ac:Name"]
-			    },
+                {
+                    "name":"ColorIllustrations",
+                    "type":"text",
+                    "path":["ac:Media.ac:ColorIllustrations "]
+                },
 
-			    {
-                                "name":"HasPhisicalVersion",
-                                "type":"text",
-                                "path":["ac:Media.ac:hasPhysicallVersion"]
-                            },
+                {
+                    "name":"PartOf",
+                    "type":"linkedObjects",
+                    "path":["ac:Media.ac:isPartOf=*.ac:Title"]
+                }
 
-			    {
-                                "name":"Situation",
-                                "type":"text",
-                                "path":["ac:Media.ac:CurrentlySituation"]
-                            },
 
-			    {
-				"name":"CreditLine",
-				"type":"text",
-				"path":["ac:Media.ac:CreditLine"]
-			    },
+            ]
+        },
 
-			    {
-				"name":"Collection",
-				"type":"linkedObjects",
-				"path":["ac:Media.ac:isCollectedIn=ac:Collection.ac:Title"]
-			    },
+        {
+            "name":"content",
+            "data":[
 
-			    {
-                                "type":"text",
-                                "value":[" "]
-                            },
+                {
+                    "type":"media",
+                    "path":["ac:Media.ac:Uri"]
+                }
 
-			    {
-				"name":"Size",
-				"type":"text",
-				"path":["ac:Media.ac:FileSize"]
-			    },
+            ]
+        },
 
-			    {
-                                "name":"OriginalSource",
-                                "type":"text",
-                                "path":["ac:Media.ac:OriginalSource"]
-                            },
+        {
+            "name":"footer",
+            "data":[
 
-			    {
-                                "name":"Resolution",
-                                "type":"text",
-                                "path":["ac:Media.ac:Resolution"]
-                            },
+                {
+                    "name":"Format",
+                    "type":"text",
+                    "path":["ac:Media.ac:format"]
+                },
 
-			    {
-				"name":"TypeDocumentary",
-				"type":"text",
-				"path":["ac:Media.ac:isTypeDocumentary=*.ac:Name"]
-			    },
+                {
+                    "name":"Size",
+                    "type":"text",
+                    "path":["ac:Media.ac:FileSize"]
+                },
 
-			    {
-				"name":"Publication",
-				"type":"linkedObjects",
-				"path":["ac:Media.ac:hasPublication=*.ac:Title"]
-			    },
+                {
+                    "name":"HasPhisicalVersion",
+                    "type":"text",
+                    "path":["ac:Media.ac:hasPhysicallVersion"]
+                },
 
-                            {
-                                "type":"text",
-                                "value":[" "]
-                            },
+                {
+                    "name":"Situation",
+                    "type":"text",
+                    "path":["ac:Media.ac:CurrentlySituation"]
+                },
 
-                            {
-                                "name":"AspectRate",
-                                "type":"text",
-                                "path":["ac:Media.ac:AspectRate"]
-                            },
+                {
+                    "name":"OriginalSource",
+                    "type":"text",
+                    "path":["ac:Media.ac:OriginalSource"]
+                },
 
-			    {
-				"name":"CameraModel",
-				"type":"text",
-				"path":["ac:Media.ac:CameraModel"]
-			    },
+                {
+                    "name":"HasVersion",
+                    "type":"text",
+                    "path":["ac:Media.ac:hasVersion"]
+                },
 
-                            {
-                                "name":"ColorModel",
-                                "type":"text",
-                                "path":["ac:Media.ac:ColorMode"]
-                            },
+                {
+                    "name":"CreditLine",
+                    "type":"text",
+                    "path":["ac:Media.ac:CreditLine"]
+                },
 
-			    {
-				"name":"Orientation",
-				"type":"text",
-				"path":["ac:Media.ac:Orientation"]
-			    },
+                {
+                    "name":"Collection",
+                    "type":"linkedObjects",
+                    "path":["ac:Media.ac:isCollectedIn=ac:Collection.ac:Title"]
+                },
 
-			    {
-				"name":"WidthImage",
-				"type":"text",
-				"path":["ac:Media.ac:WithImage"]
-			    }
+                {
+                    "type":"text",
+                    "value":[" "]
+                },
 
-			]
-		}
-	]
+                {
+                    "name":"Size",
+                    "type":"text",
+                    "path":["ac:Media.ac:FileSize"]
+                },
+
+                {
+                    "name":"Resolution",
+                    "type":"text",
+                    "path":["ac:Media.ac:Resolution"]
+                },
+
+                {
+                    "name":"Publication",
+                    "type":"linkedObjects",
+                    "path":["ac:Media.ac:hasPublication=*.ac:Title"]
+                },
+
+                {
+                    "type":"text",
+                    "value":[" "]
+                },
+
+                {
+                    "name":"AspectRate",
+                    "type":"text",
+                    "path":["ac:Media.ac:AspectRate"]
+                },
+
+                {
+                    "name":"CameraModel",
+                    "type":"text",
+                    "path":["ac:Media.ac:CameraModel"]
+                },
+
+                {
+                    "name":"ColorModel",
+                    "type":"text",
+                    "path":["ac:Media.ac:ColorMode"]
+                },
+
+                {
+                    "name":"Orientation",
+                    "type":"text",
+                    "path":["ac:Media.ac:Orientation"]
+                },
+
+                {
+                    "name":"WidthImage",
+                    "type":"text",
+                    "path":["ac:Media.ac:WithImage"]
+                },
+
+                {
+                    "type":"text",
+                    "path":["ac:Media.ac:hasLicense=*.ac:Title"]
+                },
+
+                {
+                    "type":"text",
+                    "path":["ac:Media.ac:hasLicense=*.ac:Description"]
+                },
+
+                {
+                    "type":"url",
+                    "path":["ac:Media.ac:hasLicense=*.ac:Homepage"]
+                },
+
+                {
+                    "name":"RelatedDocuments",
+                    "type":"objects",
+                    "path":["ac:Media.ac:containedBy"]
+                }
+
+            ]
+        },
+
+        {
+            "name":"thumbnail",
+            "data":[
+                {
+                    "type":"media",
+                    "value":["http://montmajor.upc.edu/rest/classes/Text/thumbnail"]
+                }
+            ]
+        }
+
+    ]
 }

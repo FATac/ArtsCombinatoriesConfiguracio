@@ -1,188 +1,202 @@
 {
-	"className":"ac:Media",
-	
-	"sections":
-	[
-		{
-			"name":"header",
-			"data":[
-		
-			    	{
-					"type":"text",
-					"path":["ac:Media.ac:Title"]
-				
-				}
+    "className":"ac:Media",
 
-			]
-		},
-		
-		{
-			"name":"body",
-			"data":[
+    "sections":
+    [
+        {
+            "name":"header",
+            "data":[
 
-			    {
-				"name":"Photographer",
-				"type":"text",
-				"path":["ac:Media.ac:carriedOutBy=ac:Agent.ac:Name"]
-			    },
+                {
+                    "type":"text",
+                    "path":["ac:Media.ac:Title"]
 
-			    {
-				"name":"Date",
-				"type":"text",
-				"path":["ac:Media.ac:created"]
-			    },
+                }
+            ]
+        },
 
-			    {
-			        "type":"text",
-			        "path":["ac:Media.ac:Description"]
-			    },
+        {
+            "name":"body",
+            "data":[
 
-			    {
-				"name":"Represents",
-				"type":"linkedObject",
-				"path":["ac:Media.ac:represents=ac:Art_Work.ac:Name", "ac:Media.ac:containedBy=ac:Case-File.ac:references"]
-			    }
-			    
-			]  
-		},
-		
-		{
-			"name":"content",
-			"data":[
-			    {
-			        "type":"media",
-			        "path":["ac:Media.ac:Uri"]
-			    },
+                {
+                    "name":"Photographer",
+                    "type":"text",
+                    "path":["ac:Media.ac:carriedOutBy=ac:Agent.ac:Name"]
+                },
 
-			    {
-				"type":"text",
-				"path":["ac:Media.ac:hasLicense=*.ac:Title"]
-			    },
+                {
+                    "name":"Date",
+                    "type":"text",
+                    "path":["ac:Media.ac:created"]
+                },
 
-                            {
-                                "type":"text",
-                                "path":["ac:Media.ac:hasLicense=*.ac:Description"]
-                            },  
+                {
+                    "name":"Place",
+                    "type":"text",
+                    "path":["ac:Media.ac:tookPlaceAt=ac:Location.ac:Name"]
+                },
 
-			    {
-				"type":"url",
-				"path":["ac:Media.ac:hasLicense=*.ac:Homepage"]
-			    }
+                {
+                    "type":"text",
+                    "path":["ac:Media.ac:Description"]
+                }
 
-			]  
-		},
+            ]
+        },
 
-		{
-			"name":"footer",
-			"data":[
-					
-                            {
-                                "name":"Format",
-                                "type":"text",
-                                "path":["ac:Media.ac:format"]
-                            },
+        {
+            "name":"content",
+            "data":[
+                {
+                    "type":"media",
+                    "path":["ac:Media.ac:Uri"]
+                },
 
-			    {
-				"name":"Place",
-				"type":"text",
-				"path":["ac:Media.ac:tookPlaceAt=ac:Location.ac:Name"]
-			    },
+                {
+                    "type":"text",
+                    "path":["ac:Media.ac:ImageFooter"]
+                },
 
-			    {
-                                "name":"HasPhisicalVersion",
-                                "type":"text",
-                                "path":["ac:Media.ac:hasPhysicallVersion"]
-                            },
+                {
+                    "name":"CreditLine",
+                    "type":"text",
+                    "path":["ac:Media.ac:CreditLine"]
+                },
 
-			    {
-                                "name":"Situation",
-                                "type":"text",
-                                "path":["ac:Media.ac:CurrentlySituation"]
-                            },
+                {
+                    "name":"TypeDocumentary",
+                    "type":"text",
+                    "path":["ac:Media.ac:isTypeDocumentary=*.ac:Name"]
+                },
 
-			    {
-				"name":"CreditLine",
-				"type":"text",
-				"path":["ac:Media.ac:CreditLine"]
-			    },
+                {
+                    "name":"Format",
+                    "type":"text",
+                    "path":["ac:Media.ac:format"]
+                },
 
-			    {
-				"name":"Collection",
-				"type":"linkedObjects",
-				"path":["ac:Media.ac:isCollectedIn=ac:Collection.ac:Title"]
-			    },
+                {
+                    "name":"Size",
+                    "type":"text",
+                    "path":["ac:Media.ac:FileSize"]
+                },
 
-			    {
-                                "type":"text",
-                                "value":[" "]
-                            },
+                {
+                    "name":"Resolution",
+                    "type":"text",
+                    "path":["ac:Media.ac:Resolution"]
+                },
 
-			    {
-				"name":"Size",
-				"type":"text",
-				"path":["ac:Media.ac:FileSize"]
-			    },
+                {
+                    "name":"HasPhisicalVersion",
+                    "type":"text",
+                    "path":["ac:Media.ac:hasPhysicallVersion"]
+                },
 
-			    {
-                                "name":"OriginalSource",
-                                "type":"text",
-                                "path":["ac:Media.ac:OriginalSource"]
-                            },
+                {
+                    "name":"Situation",
+                    "type":"text",
+                    "path":["ac:Media.ac:CurrentlySituation"]
+                },
 
-			    {
-                                "name":"Resolution",
-                                "type":"text",
-                                "path":["ac:Media.ac:Resolution"]
-                            },
+                {
+                    "name":"OriginalSource",
+                    "type":"text",
+                    "path":["ac:Media.ac:OriginalSource"]
+                },
 
-			    {
-				"name":"TypeDocumentary",
-				"type":"text",
-				"path":["ac:Media.ac:isTypeDocumentary=*.ac:Name"]
-			    },
+                {
+                    "type":"text",
+                    "path":["ac:Media.ac:hasLicense=*.ac:Title"]
+                },
 
-			    {
-				"name":"Publication",
-				"type":"linkedObjects",
-				"path":["ac:Media.ac:hasPublication=*.ac:Title"]
-			    },
+                {
+                    "type":"text",
+                    "path":["ac:Media.ac:hasLicense=*.ac:Description"]
+                },
 
-                            {
-                                "type":"text",
-                                "value":[" "]
-                            },
+                {
+                    "type":"url",
+                    "path":["ac:Media.ac:hasLicense=*.ac:Homepage"]
+                }
 
-                            {
-                                "name":"AspectRate",
-                                "type":"text",
-                                "path":["ac:Media.ac:AspectRate"]
-                            },
+            ]
+        },
 
-			    {
-				"name":"CameraModel",
-				"type":"text",
-				"path":["ac:Media.ac:CameraModel"]
-			    },
+        {
+            "name":"footer",
+            "data":[
 
-                            {
-                                "name":"ColorModel",
-                                "type":"text",
-                                "path":["ac:Media.ac:ColorMode"]
-                            },
+                {
+                    "name":"Publication",
+                    "type":"linkedObjects",
+                    "path":["ac:Media.ac:hasPublication=*.ac:Title"]
+                },
 
-			    {
-				"name":"Orientation",
-				"type":"text",
-				"path":["ac:Media.ac:Orientation"]
-			    },
+                {
+                    "name":"AspectRate",
+                    "type":"text",
+                    "path":["ac:Media.ac:AspectRate"]
+                },
 
-			    {
-				"name":"WidthImage",
-				"type":"text",
-				"path":["ac:Media.ac:WithImage"]
-			    }
+                {
+                    "name":"CameraModel",
+                    "type":"text",
+                    "path":["ac:Media.ac:CameraModel"]
+                },
 
-			]
-		}
-	]
+                {
+                    "name":"ColorModel",
+                    "type":"text",
+                    "path":["ac:Media.ac:ColorMode"]
+                },
+
+                {
+                    "name":"Orientation",
+                    "type":"text",
+                    "path":["ac:Media.ac:Orientation"]
+                },
+
+                {
+                    "name":"WidthImage",
+                    "type":"text",
+                    "path":["ac:Media.ac:WithImage"]
+                },
+
+                {
+                    "name":"Collection",
+                    "type":"linkedObjects",
+                    "path":["ac:Media.ac:isCollectedIn=ac:Collection.ac:Title"]
+                },
+
+                {
+                    "type":"text",
+                    "value":[" "]
+                },
+
+                {
+                    "type":"text",
+                    "value":[" "]
+                },
+
+                {
+                    "name":"RelatedDocuments",
+                    "type":"objects",
+                    "path":["ac:Media.ac:containedBy"]
+                }
+
+            ]
+        },
+
+        {
+            "name":"thumbnail",
+            "data":[
+                {
+                    "type":"media",
+                    "path":["ac:Media.ac:Uri"]
+                }
+            ]
+        }
+    ]
 }

@@ -1,101 +1,99 @@
 {
-	"className":"ac:FrameActivity",
-	
-	"sections":
-	[
-		{
-			"name":"header",
-			"data":[
-		
-			    	{
-					"type":"text",
-					"path":["ac:FrameActivity.ac:Title"]
-				},
+    "className":"ac:FrameActivity",
 
-                                {
-                                        "type":"text",
-                                        "path":["ac:FrameActivity.ac:Subtitle"]
-                                }
+    "sections":
+    [
+        {
+            "name":"header",
+            "data":[
 
-			]
-		},
-		
-		{
-			"name":"body",
-			"data":[
-			    
-			    	{
-					"name":"Year",
-					"type":"text",
-					"path":["ac:FrameActivity.ac:StartDate", "ac:FrameActivity.ac:EndDate"]
-				},
-			    
-				{
-					"type":"text",
-					"path":["ac:FrameActivity.ac:Description"]
-				},
-				
-				{
-					"type":"text",
-					"value":["  "]
-				},
-				
-				{
-					"name":"Creator",
-					"type":"linkedObjects",
-					"path":["ac:FrameActivity.ac:carriedOutBy=*.ac:Name"]
-				},
+                {
+                    "type":"text",
+                    "path":["ac:FrameActivity.ac:Title"]
+                },
 
-				{
-					"name":"Participants",
-					"type":"linkedObjects",
-					"path":["ac:FrameActivity.ac:hasparticipedIn=*.ac:Name"]
-				},				
-				
-				{
-					"name":"Places",
-					"type":"text",
-					"path":["ac:FrameActivity.ac:tookPlaceAt=ac:Location.ac:Name", "ac:FrameActivity.ac:tookPlaceOnorWithin=ac:Location.ac:Name"]
-				},
+                {
+                    "type":"text",
+                    "path":["ac:FrameActivity.ac:Subtitle"]
+                }
+            ]
+        },
 
-                                {
-                                        "name":"Expedient",
-                                        "type":"linkedObjects",
-                                        "path":["ac:FrameActivity.ac:isReferencedBy=*.ac:Title"]
-                                }  
+        {
+            "name":"body",
+            "data":[
 
-				
-			]
-		},
-		
-		{
-			"name":"content",
-			"data":[
+                {
+                    "name":"Year",
+                    "type":"text",
+                    "path":["ac:FrameActivity.ac:StartDate", "ac:FrameActivity.ac:EndDate"]
+                },
 
-                                {
-                                        "name":"RelatedActivites",
-                                        "type":"objects",
-                                        "path":["ac:FrameActivity.ac:hasSuperActivity"]
-                                },
-			    
-				{
-					"name":"RelatedActivites",
-					"type":"objects",
-					"path":["ac:FrameActivity.ac:hasSpecificActivity"]
-				},					
-				
-				{
-					"name":"RelatedPublications",
-					"type":"objects",
-					"path":["ac:FrameActivity.ac:hasPublication"]
-				},
-		    
-			    	{
-			        	"name":"Representation",
-					"type":"objects",
-				        "path":["ac:FrameActivity.ac:representedBy"]
-		  		}
-		    ]
-		}
-	]
+                {
+                    "type":"text",
+                    "path":["ac:FrameActivity.ac:Description"]
+                },
+
+                {
+                    "type":"text",
+                    "value":["  "]
+                },
+
+                {
+                    "name":"Creator",
+                    "type":"linkedObjects",
+                    "path":["ac:FrameActivity.ac:carriedOutBy=*.ac:Name"]
+                },
+
+                {
+                    "name":"Places",
+                    "type":"text",
+                    "path":["ac:FrameActivity.ac:tookPlaceAt=ac:Location.ac:Name", "ac:FrameActivity.ac:tookPlaceOnorWithin=ac:Location.ac:Name"]
+                }
+
+            ]
+        },
+
+        {
+            "name":"content",
+            "data":[
+
+                {
+                    "name":"RelatedPublications",
+                    "type":"objects",
+                    "path":["ac:FrameActivity.ac:hasPublication"]
+                },
+
+                {
+                    "name":"RelatedActivites",
+                    "type":"objects",
+                    "path":["ac:FrameActivity.ac:hasSpecificActivity"]
+                },
+
+                {
+                    "name":"RelatedActivites",
+                    "type":"objects",
+                    "path":["ac:FrameActivity.ac:hasSuperActivity"]
+                },
+
+                {
+                    "name":"Representation",
+                    "type":"objects",
+                    "path":["ac:FrameActivity.ac:representedBy"]
+              	},
+
+                {
+                    "name":"Participants",
+                    "type":"linkedObjects",
+                    "path":["ac:FrameActivity.ac:hasparticipedIn=*.ac:Name"]
+                },
+
+                {
+                    "name":"Expedient",
+                    "type":"linkedObjects",
+                    "path":["ac:FrameActivity.ac:isReferencedBy=*.ac:Title"]
+                }
+            ]
+        }
+    ]
 }

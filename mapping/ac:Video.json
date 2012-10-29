@@ -1,232 +1,249 @@
 {
-	"className":"ac:Media",
-	
-	"sections":
-	[
-		{
-			"name":"header",
-			"data":[
-		
-			    	{
-					"type":"text",
-					"path":["ac:Media.ac:Title"]
-				}
-			]
-		},
-		
-		{
-			"name":"body",
-			"data":[
+    "className":"ac:Media",
 
-			    {
-				"name":"Speaker",
-				"type":"text",
-				"path":["ac:Media.ac:carriedOutBy=ac:Agent.ac:Name"]
-			    },
+    "sections":
+    [
+        {
+            "name":"header",
+            "data":[
 
-			    {
-				"name":"Date",
-				"type":"text",
-				"path":["ac:Media.ac:created"]
-			    },
+                {
+                    "type":"text",
+                    "path":["ac:Media.ac:Title"]
+                }
+            ]
+        },
 
-			    {
-				"type":"text",
-				"path":["ac:Media.ac:Description"]
-			    },		
+        {
+            "name":"body",
+            "data":[
 
-			    {
-			        "name":"Subtitle",
-			        "type":"text",
-			        "path":["ac:Media.ac:Subtitle"]
-			    },
+                {
+                    "name":"Speaker",
+                    "type":"text",
+                    "path":["ac:Media.ac:carriedOutBy=ac:Agent.ac:Name"]
+                },
 
-                            {
-                                "name":"Language",
-                                "type":"text",
-                                "path":["ac:Media.ac:hasLanguage=ac:Language.ac:Label"]
-                            },
+                {
+                    "name":"Date",
+                    "type":"text",
+                    "path":["ac:Media.ac:created"]
+                },
 
-			    {
-				"name":"Translation",
-				"type":"text",
-				"path":["ac:Media.ac:hasTranslation=ac:Language.ac:Label"]
-			    },
+                {
+                    "name":"Place",
+                    "type":"text",
+                    "path":["ac:Media.ac:tookPlaceAt=ac:Location.ac:Name"]
+                },
 
-			    {
-				"name":"PartOf",
-				"type":"linkedObjects",
-				"path":["ac:Media.ac:isPartOf=*.ac:Title"]
-			    }
-			    
-			]  
-		},
-		
-		{
-			"name":"content",
-			"data":[
-			    {
-			        "type":"media",
-			        "path":["ac:Media.ac:Uri"]
-			    },
+                {
+                    "type":"text",
+                    "path":["ac:Media.ac:Description"]
+                },
 
-                            {
-                                "type":"text",
-                                "path":["ac:Media.ac:hasLicense=*.ac:Title"]
-                            },  
+                {
+                    "name":"CreditLine",
+                    "type":"text",
+                    "path":["ac:Media.ac:CreditLine"]
+                },
 
-                            {
-                                "type":"text",
-                                "path":["ac:Media.ac:hasLicense=*.ac:Description"]
-                            },
+                {
+                    "name":"TypeDocumentary",
+                    "type":"text",
+                    "path":["ac:Media.ac:isTypeDocumentary=*.ac:Name"]
+                },
 
-                            {
-                                "type":"url",
-                                "path":["ac:Media.ac:hasLicense=*.ac:Homepage"]
-                            }
-			]  
-		},
+                {
+                    "name":"Language",
+                    "type":"text",
+                    "path":["ac:Media.ac:hasLanguage=ac:Language.ac:Label"]
+                },
 
-		{
-			"name":"footer",
-			"data":[
-					
-                            {
-                                "name":"Format",
-                                "type":"text",
-                                "path":["ac:Media.ac:format"]
-                            },
+                {
+                    "name":"Subtitle",
+                    "type":"text",
+                    "path":["ac:Media.ac:Subtitle"]
+                },
 
-			    {
-				"name":"Place",
-				"type":"text",
-				"path":["ac:Media.ac:tookPlaceAt=ac:Location.ac:Name"]
-			    },
+                {
+                    "name":"Translation",
+                    "type":"text",
+                    "path":["ac:Media.ac:hasTranslation=ac:Language.ac:Label"]
+                },
 
-			    {
-                                "name":"Extent",
-                                "type":"text",
-                                "path":["ac:Media.ac:CreditLine"]
-                            },
+                {
+                    "name":"PartOf",
+                    "type":"linkedObjects",
+                    "path":["ac:Media.ac:isPartOf=*.ac:Title"]
+                }
 
-			    {
-                                "name":"Situation",
-                                "type":"text",
-                                "path":["ac:Media.ac:CurrentlySituation"]
-                            },
+            ]
+        },
 
-			    {
-				"name":"CreditLine",
-				"type":"text",
-				"path":["ac:Media.ac:CreditLine"]
-			    },
+        {
+            "name":"content",
+            "data":[
+                {
+                    "type":"media",
+                    "path":["ac:Media.ac:Uri"]
+                }
+            ]
+        },
 
-			    {
-				"name":"Collection",
-				"type":"linkedObjects",
-				"path":["ac:Media.ac:isCollectedIn=ac:Collection.ac:Title"]
-			    },
+        {
+            "name":"footer",
+            "data":[
 
-			    {
-                                "type":"text",
-                                "value":[" "]
-                            },
+                {
+                    "name":"Format",
+                    "type":"text",
+                    "path":["ac:Media.ac:format"]
+                },
 
-			    {
-				"name":"Size",
-				"type":"text",
-				"path":["ac:Media.ac:FileSize"]
-			    },
+                {
+                    "name":"Extent",
+                    "type":"text",
+                    "path":["ac:Media.ac:extent"]
+                },
 
-			    {
-                                "name":"OriginalSource",
-                                "type":"text",
-                                "path":["ac:Media.ac:OriginalSource"]
-                            },
+                {
+                    "name":"ColorModel",
+                    "type":"text",
+                    "path":["ac:Media.ac:ColorMode"]
+                },
 
-			    {
-                                "name":"Resolution",
-                                "type":"text",
-                                "path":["ac:Media.ac:Resolution"]
-                            },
+                {
+                    "name":"HasPhisicalVersion",
+                    "type":"text",
+                    "path":["ac:Media.ac:hasPhysicallVersion"]
+                },
 
-			    {
-				"name":"TypeDocumentary",
-				"type":"text",
-				"path":["ac:Media.ac:isTypeDocumentary=*.ac:Name"]
-			    },
+                {
+                    "name":"Situation",
+                    "type":"text",
+                    "path":["ac:Media.ac:CurrentlySituation"]
+                },
 
-			    {
-				"name":"Publication",
-				"type":"linkedObjects",
-				"path":["ac:Media.ac:hasPublication=*.ac:Title"]
-			    },
+                {
+                    "name":"OriginalSource",
+                    "type":"text",
+                    "path":["ac:Media.ac:OriginalSource"]
+                },
 
-                            {
-                                "type":"text",
-                                "value":[" "]
-                            },
+                {
+                    "name":"AspectRate",
+                    "type":"text",
+                    "path":["ac:Media.ac:AspectRate"]
+                },
 
-                            {
-                                "name":"AspectRate",
-                                "type":"text",
-                                "path":["ac:Media.ac:AspectRate"]
-                            },
+                {
+                    "name":"Channels",
+                    "type":"text",
+                    "path":["ac:Media.ac:AudioChannels"]
+                },
 
-			    {
-				"name":"CameraModel",
-				"type":"text",
-				"path":["ac:Media.ac:CameraModel"]
-			    },
+                {
+                    "name":"AudioCodec",
+                    "type":"text",
+                    "path":["ac:Media.ac:AudioCodec"]
+                },
 
-                            {
-                                "name":"ColorModel",
-                                "type":"text",
-                                "path":["ac:Media.ac:ColorMode"]
-                            },
+                {
+                    "name":"BitRate",
+                    "type":"text",
+                    "path":["ac:Media.ac:BitRate"]
+                },
 
-			    {
-				"name":"Orientation",
-				"type":"text",
-				"path":["ac:Media.ac:Orientation"]
-			    },
+                {
+                    "name":"CameraModel",
+                    "type":"text",
+                    "path":["ac:Media.ac:CameraModel"]
+                },
 
-			    {
-				"name":"WidthImage",
-				"type":"text",
-				"path":["ac:Media.ac:WithImage"]
-			    },
+                {
+                    "name":"Resolution",
+                    "type":"text",
+                    "path":["ac:Media.ac:Resolution"]
+                },
 
-                            {
-                                "type":"text",
-                                "value":[" "]
-                            },
+                {
+                    "name":"SamplingRate",
+                    "type":"text",
+                    "path":["ac:Media.ac:SamplingRate"]
+                },
 
-                            {
-                                "name":"Channels",
-                                "type":"text",
-                                "path":["ac:Media.ac:AudioChannels"]
-                            },
+                {
+                    "name":"VideoCodec",
+                    "type":"text",
+                    "path":["ac:Media.ac:VideoCodec"]
+                },
 
-                            {
-                                "name":"AudioCodec",
-                                "type":"text",
-                                "path":["ac:Media.ac:AudioCodec"]
-                            },
+                {
+                    "name":"Collection",
+                    "type":"linkedObjects",
+                    "path":["ac:Media.ac:isCollectedIn=ac:Collection.ac:Title"]
+                },
 
-                            {
-                                "name":"BitRate",
-                                "type":"text",
-                                "path":["ac:Media.ac:BitRate"]
-                            },
+                {
+                    "type":"text",
+                    "value":[" "]
+                },
 
-                            {
-                                "name":"SamplingRate",
-                                "type":"text",
-                                "path":["ac:Media.ac:SamplingRate"]
-                            }
+                {
+                    "name":"Size",
+                    "type":"text",
+                    "path":["ac:Media.ac:FileSize"]
+                },
 
-			]
-		}
-	]
+                {
+                    "name":"Publication",
+                    "type":"linkedObjects",
+                    "path":["ac:Media.ac:hasPublication=*.ac:Title"]
+                },
+
+                {
+                    "type":"text",
+                    "value":[" "]
+                },
+
+                {
+                    "name":"Orientation",
+                    "type":"text",
+                    "path":["ac:Media.ac:Orientation"]
+                },
+
+                {
+                    "name":"WidthImage",
+                    "type":"text",
+                    "path":["ac:Media.ac:WithImage"]
+                },
+
+                {
+                    "type":"text",
+                    "value":[" "]
+                },
+
+                {
+                    "type":"text",
+                    "path":["ac:Media.ac:hasLicense=*.ac:Title"]
+                },
+
+                {
+                    "type":"text",
+                    "path":["ac:Media.ac:hasLicense=*.ac:Description"]
+                },
+
+                {
+                    "type":"url",
+                    "path":["ac:Media.ac:hasLicense=*.ac:Homepage"]
+                },
+
+                {
+                    "name":"RelatedDocuments",
+                    "type":"objects",
+                    "path":["ac:Media.ac:containedBy"]
+                }
+            ]
+        }
+    ]
 }

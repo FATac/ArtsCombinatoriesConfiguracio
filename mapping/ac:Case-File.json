@@ -1,104 +1,103 @@
 {
-	"className":"ac:Case-File",
-	
-	"sections":
-	[
-		{
-			"name":"header",
-			"data":[
-		
-			    	{
-					"type":"text",
-					"path":["ac:Case-File.ac:Title"]
-				},
+    "className":"ac:Case-File",
 
-                                {
-                                        "type":"counter",
-                                        "path":["ac:Case-File.ac:hasMedia=*.class"]
-                                }
-			]
-		},
-		
-		{
-			"name":"body",
-			"data":[
-			    
-				{
-					"type":"text",
-					"value":[" "]
-				},
+    "sections":
+    [
+        {
+            "name":"header",
+            "data":[
 
-				{
-					"type":"text",
-					"name":"Year",
-					"path":["ac:Case-File.ac:StartDate", "ac:Case-File.ac:EndDate"]
-				},
+                {
+                    "type":"text",
+                    "path":["ac:Case-File.ac:Title"]
+                },
 
-                                {
-                                        "type":"text",
-                                        "path":["ac:Case-File.ac:Case-fileDescriptionLevel"]
-                                },
+                {
+                    "type":"counter",
+                    "path":["ac:Case-File.ac:hasMedia=*.class"]
+                }
+            ]
+        },
 
-                                {
-                                        "name":"RegisterNumber",
-                                        "type":"text",
-                                        "path":["ac:Case-File.ac:RegisterNumber"]
-                                },
+        {
+            "name":"body",
+            "data":[
 
-				{
-				        "type":"text",
-				        "path":["ac:Case-File.ac:Description"]
-				},
+                {
+                    "type":"text",
+                    "value":[" "]
+                },
 
-                                {
-                                        "type":"text",
-                                        "value":[" "]
-                                },
+                {
+                    "type":"text",
+                    "name":"Year",
+                    "path":["ac:Case-File.ac:StartDate", "ac:Case-File.ac:EndDate"]
+                },
 
-				{
-                                        "name":"Holding",
-                                        "type":"text",
-                                        "path":["ac:Case-File.ac:Holding"]
-                                },
+                {
+                    "type":"text",
+                    "path":["ac:Case-File.ac:Case-fileDescriptionLevel"]
+                },
 
-				{
-					"name":"Volum",
-					"type":"text",
-					"path":["ac:Case-File.ac:Volum"]
-				},
+                {
+                    "name":"RegisterNumber",
+                    "type":"text",
+                    "path":["ac:Case-File.ac:RegisterNumber"]
+                },
 
-				{
-					"name":"Manuscript",
-					"type":"text",
-					"path":["ac:Case-File.ac:Manuscript"]
-				}
+                {
+                    "type":"text",
+                    "path":["ac:Case-File.ac:Description"]
+                },
 
+                {
+                    "type":"text",
+                    "value":[" "]
+                },
 
-			]
-		},
-		
-		{
-			"name":"content",
-			"data":[
-			
-			 	{   
-			        "type":"search",
-			        "value":["CaseFile:"],
-			        "path":["ac:Case-File.id"],
-				"filter":["class","Year"]
-			    }
-			] 
-		},
-		
-		{
-			"name":"thumbnail",
-			"data":[
-			
-			 	{   
-			        "type":"objects",
-			        "path":["ac:Case-File.ac:hasMedia", "ac:Case-File.ac:references"]
-			    }
-			] 
-		}
-	]
+                {
+                    "name":"Holding",
+                    "type":"text",
+                    "path":["ac:Case-File.ac:Holding"]
+                },
+
+                {
+                    "name":"Volum",
+                    "type":"text",
+                    "path":["ac:Case-File.ac:Volum"]
+                },
+
+                {
+                    "name":"Manuscript",
+                    "type":"text",
+                    "path":["ac:Case-File.ac:Manuscript"]
+                }
+
+            ]
+        },
+
+        {
+            "name":"content",
+            "data":[
+
+                {
+                    "type":"search",
+                    "value":["CaseFile:"],
+                    "path":["ac:Case-File.id"],
+                    "filter":["class","Year"]
+                }
+            ]
+        },
+
+        {
+            "name":"thumbnail",
+            "data":[
+
+                {
+                    "type":"objects",
+                    "path":["ac:Case-File.ac:hasMedia", "ac:Case-File.ac:references"]
+                }
+            ]
+        }
+    ]
 }

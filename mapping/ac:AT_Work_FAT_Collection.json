@@ -1,129 +1,134 @@
 {
-	"className":"ac:Art_Work",
-	
-	"sections":
-	[
-		{
-			"name":"header",
-			"data":[
-		
-			    	{
-					"type":"text",
-					"path":["ac:Art_Work.ac:Title","ac:Art_Work.ac:Date"]
-				},
+    "className":"ac:Art_Work",
 
-				{
-					"type":"text",
-					"path":["ac:Art_Work.ac:Subtitle"]
-				}
-			]
-		},
-		
-		{
-			"name":"body",
-			"data":[
+    "sections":
+    [
+        {
+            "name":"header",
+            "data":[
 
-                               {
-                                        "type":"text",
-					"name":"Author",
-                                        "path":["ac:Art_Work.ac:carriedOutBy=ac:Person.ac:Name", "ac:Publication.ac:applicationOf=ac:Author.ac:performedBy=ac:Agent.ac:Name"]
-                                },
+                {
+                    "type":"text",
+                    "path":["ac:Art_Work.ac:Title","ac:Art_Work.ac:Date"]
+                },
 
-                                {
-                                        "type":"text",
-                                        "name":"Technique",
-                                        "path":["ac:Art_Work.ac:Technique"]
-                                },
+                {
+                    "type":"text",
+                    "path":["ac:Art_Work.ac:Subtitle"]
+                }
+            ]
+        },
 
-				{
-					"type":"text",
-					"name":"License",
-					"path":["ac:Art_Work.ac:hasLicense=ac:License.ac:Homepage"]
-				},
+        {
+            "name":"body",
+            "data":[
 
-                                {
-                                        "type":"text",
-                                        "value":[" "]
-                                },
+                {
+                    "type":"text",
+                    "name":"Author",
+                    "path":["ac:Art_Work.ac:carriedOutBy=ac:Person.ac:Name", "ac:Publication.ac:applicationOf=ac:Author.ac:performedBy=ac:Agent.ac:Name"]
+                },
 
-                                {
-                                        "type":"text",
-                                        "name":"Measurement",
-                                        "path":["ac:Art_Work.ac:measurement"]
-                                },
+                {
+                    "name":"Place",
+                    "type":"text",
+                    "path":["ac:Art_Work.ac:tookPlaceAt=ac:Location.ac:Name"]
+                },
 
-                                {
-                                        "type":"text",
-                                        "name":"NumberT",
-                                        "path":["ac:Art_Work.ac:NumberT"]
-                                },
+                {
+                    "type":"text",
+                    "name":"Technique",
+                    "path":["ac:Art_Work.ac:Technique"]
+                },
 
-                                {
-                                        "type":"text",
-                                        "name":"Vegap",
-                                        "path":["ac:Art_Work.ac:Vegap"]
-                                },
+                {
+                    "type":"text",
+                    "name":"Measurement",
+                    "path":["ac:Art_Work.ac:measurement"]
+                },
 
-                                {
-                                        "type":"text",
-                                        "name":"AdmissionDate",
-                                        "path":["ac:Art_Work.ac:AdmissionDate"]
-                                },
+                {
+                    "type":"text",
+                    "name":"License",
+                    "path":["ac:Art_Work.ac:hasLicense=ac:License.ac:Homepage"]
+                },
 
-                                {
-                                        "type":"text",
-                                        "name":"Cover",
-                                        "path":["ac:Art_Work.ac:Cover"]
-                                },
+                {
+                    "type":"text",
+                    "value":[" "]
+                },
 
+                {
+                    "type":"text",
+                    "name":"Vegap",
+                    "path":["ac:Art_Work.ac:Vegap"]
+                },
 
-                                {
-                                        "type":"text",
-                                        "name":"NumberOfCopies",
-                                        "path":["ac:Art_Work.ac:NumberOfCopies"]
-                                },
+                {
+                    "type":"text",
+                    "name":"NumberT",
+                    "path":["ac:Art_Work.ac:NumberT"]
+                },
 
-                                {
-                                        "type":"text",
-                                        "name":"PagesNumber",
-                                        "path":["ac:Art_Work.ac:NumberofPages"]
-                                },
+                {
+                    "type":"text",
+                    "name":"AdmissionDate",
+                    "path":["ac:Art_Work.ac:AdmissionDate"]
+                },
 
-                                {
-                                        "type":"text",
-                                        "name":"SheetNumber",
-                                        "path":["ac:Art_Work.ac:SheetNumber"]
-                                },
+                {
+                    "type":"text",
+                    "name":"Cover",
+                    "path":["ac:Art_Work.ac:Cover"]
+                },
 
-                                {
-                                        "type":"text",
-                                        "name":"Watermark",
-                                        "path":["ac:Art_Work.ac:Watermark"]
-                                },
+                {
+                    "type":"text",
+                    "name":"NumberOfCopies",
+                    "path":["ac:Art_Work.ac:NumberOfCopies"]
+                },
 
-                                {
-                                        "type":"text",
-                                        "path":["ac:Art_Work.ac:CreditLine"]
-                                },
+                {
+                    "type":"text",
+                    "name":"PagesNumber",
+                    "path":["ac:Art_Work.ac:NumberofPages"]
+                },
 
-				{
-					"type":"linkedObjects",
-					"name":"Expedient",
-					"path":["ac:Art_Work.ac:isReferencedBy=*.ac:Title"]
-				}	
-			]  
-		},
-		
-		{
-		    "name":"content",
-		    "data":[
-		        
-		        {
-		            "name":"Representation",
-		            "type":"objects",
-			    "path":["ac:Art_Work.ac:representedBy","ac:Art_Work.ac:hasRepresentation"]
-		        }
-		    ]
-		}
-	]
+                {
+                    "type":"text",
+                    "name":"SheetNumber",
+                    "path":["ac:Art_Work.ac:SheetNumber"]
+                },
+
+                {
+                    "type":"text",
+                    "name":"Watermark",
+                    "path":["ac:Art_Work.ac:Watermark"]
+                },
+
+                {
+                    "type":"text",
+                    "path":["ac:Art_Work.ac:CreditLine"]
+                },
+
+                {
+                    "type":"linkedObjects",
+                    "name":"Expedient",
+                    "path":["ac:Art_Work.ac:isReferencedBy=*.ac:Title"]
+                }
+            ]
+        },
+
+        {
+            "name":"content",
+            "data":[
+
+                {
+                    "name":"Representation",
+                    "type":"objects",
+                    "path":["ac:Art_Work.ac:representedBy","ac:Art_Work.ac:hasRepresentation"]
+                }
+            ]
+        }
+    ]
 }
